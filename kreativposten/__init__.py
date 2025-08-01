@@ -1,42 +1,51 @@
-# kreativposten/__init__.py
-import os
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import LoginManager
 from flask_mail import Mail
 from .config import Config
-from .models import db
-from .utils import nl2br
+import os
 
-# Initialisiere die Extensions hier, aber ohne App-Objekt
+# 1. Initialisiere die Erweiterungen außerhalb der Factory
+db = SQLAlchemy()
+migrate = Migrate()
+login_manager = LoginManager()
 mail = Mail()
 
 def create_app(config_class=Config):
-    """
-    Diese Funktion ist eine "Application Factory". Sie erstellt und 
-    konfiguriert die Flask-Anwendung.
-    """
-    app = Flask(__name__, instance_relative_config=True)
-    
-    # Lade die Konfiguration
+    # 2. Erstelle die App-Instanz
+    app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Initialisiere die Extensions mit der App
+    # 3. Verbinde die Erweiterungen mit der App
     db.init_app(app)
+    migrate.init_app(app, db)
+    login_manager.init_app(app)
     mail.init_app(app)
 
-    # Registriere den Template-Filter
-    app.jinja_env.filters['nl2br'] = nl2br
+    # Wichtig: Login-Manager Konfiguration
+    login_manager.login_view = 'auth.login' # Annahme: es gibt eine 'auth' Blueprint mit einer 'login' Route
 
-    # Importiere und registriere die Blueprints INNERHALB der Funktion
-    from .blueprints.main import main_bp
-    from .blueprints.kalkulator import kalkulator_bp
-    from .blueprints.stammdaten import stammdaten_bp
-    from .blueprints.portal import portal_bp
-    from .blueprints.api import api_bp
+    # 4. Importiere und registriere die Blueprints innerhalb der Factory
+    from .blueprints.main import main as main_blueprint
+    from .blueprints.kalkulator import kalkulator as kalkulator_blueprint
+    from .blueprints.stammdaten import stammdaten as stammdaten_blueprint
+    from .blueprints.portal import portal as portal_blueprint
+    from .blueprints.api import api as api_blueprint
+    # from .blueprints.auth import auth as auth_blueprint # Auskommentiert, falls nicht vorhanden
+
+    app.register_blueprint(main_blueprint)
+    app.register_blueprint(kalkulator_blueprint)
+    app.register_blueprint(stammdaten_blueprint, url_prefix='/stammdaten')
+    app.register_blueprint(portal_blueprint)
+    app.register_blueprint(api_blueprint, url_prefix='/api')
+    # app.register_blueprint(auth_blueprint) # Auskommentiert, falls nicht vorhanden
     
-    app.register_blueprint(main_bp)
-    app.register_blueprint(kalkulator_bp)
-    app.register_blueprint(stammdaten_bp)
-    app.register_blueprint(portal_bp)
-    app.register_blueprint(api_bp)
+    with app.app_context():
+        # Stelle sicher, dass die Modelle der DB bekannt sind
+        from . import models
+        
+        # Erstelle alle Tabellen, falls die DB nicht existiert
+        # db.create_all() # Normalerweise durch 'flask db upgrade' gehandhabt
 
     return app

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% set active_page = 'kunden' %}
+
+{% block title %}Kunden verwalten - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem; }
+    .card-header h2 { margin: 0; font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #495057; }
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        box-sizing: border-box;
+    }
+    .btn { display: inline-block; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: #007bff; border: none; padding: .6rem 1.2rem; font-size: 1rem; border-radius: 8px; text-decoration: none; }
+    .table-wrapper { margin-top: 2rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+    th { background-color: #f8f9fa; }
+    tr:last-child td { border-bottom: none; }
+    .btn-small { padding: .25rem .5rem; font-size: .875rem; }
+    .btn-secondary { background-color: #6c757d; }
+</style>
+
+<div class="main-content-padded">
+    <div class="page-header">
+        <h1>Kunden verwalten</h1>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card">
+        <div class="card-header"><h2>Neuen Kunden anlegen</h2></div>
+        <form action="{{ url_for('main.kunde_anlegen') }}" method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="firma">Firma (optional)</label>
+                    <input type="text" id="firma" name="firma">
+                </div>
+            </div>
+             <div class="form-grid">
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="text" id="telefon" name="telefon">
+                </div>
+            </div>
+            <button type="submit" class="btn">Kunden speichern</button>
+        </form>
+    </div>
+
+    <div class="table-wrapper card" style="margin-top: 2rem;">
+        <h2>Bestehende Kunden</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Firma</th>
+                    <th>Kontakt</th>
+                    <th>Aufträge</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for kunde in kunden %}
+                <tr>
+                    <td>{{ kunde.name }}</td>
+                    <td>{{ kunde.firma or '-' }}</td>
+                    <td>{{ kunde.email or '-' }}</td>
+                    <td>{{ kunde.auftraege | length }}</td>
+                    <td>
+                        <a href="{{ url_for('main.kunde_details', kunde_id=kunde.id) }}" class="btn btn-small">Details</a>
+                        <a href="{{ url_for('main.kunde_bearbeiten', kunde_id=kunde.id) }}" class="btn btn-secondary btn-small">Bearbeiten</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Noch keine Kunden angelegt.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

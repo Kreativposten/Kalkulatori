@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% set active_page = 'kunden' %}
+
+{% block title %}Kundendetails: {{ kunde.name }} - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+    .page-header h1 { margin: 0; line-height: 1.2; }
+    .page-header .sub-head { font-size: 1.2rem; font-weight: 400; color: var(--text-secondary); }
+    .btn { display: inline-block; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: #007bff; border: none; padding: .6rem 1.2rem; font-size: 1rem; border-radius: 8px; text-decoration: none; }
+    .btn-secondary { background-color: #6c757d; }
+
+    .grid-container { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); }
+    .card-header h2 { margin: 0; font-size: 1.2rem; }
+    .card-content { padding: 1.5rem; }
+
+    .info-list { list-style: none; padding: 0; }
+    .info-list li { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); }
+    .info-list li:last-child { border-bottom: none; }
+    .info-list li strong { color: var(--text-secondary); }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+    thead { background-color: #f8f9fa; }
+    tbody tr:hover { background-color: #f1f5f9; }
+</style>
+
+<div class="main-content-padded">
+    <div class="page-header">
+        <div>
+            <a href="{{ url_for('main.kunden_verwalten') }}">&laquo; Zurück zur Kundenübersicht</a>
+            <h1>{{ kunde.name }}</h1>
+            <span class="sub-head">{{ kunde.firma or 'Privatkunde' }}</span>
+        </div>
+        <a href="{{ url_for('main.kunde_bearbeiten', kunde_id=kunde.id) }}" class="btn btn-secondary">Stammdaten bearbeiten</a>
+    </div>
+
+    <div class="grid-container">
+        <div class="kundendaten-spalte">
+            <div class="card">
+                <div class="card-header"><h2>Kontaktdaten</h2></div>
+                <div class="card-content">
+                    <ul class="info-list">
+                        <li><strong>E-Mail</strong> <span>{{ kunde.email or 'N/A' }}</span></li>
+                        <li><strong>Telefon</strong> <span>{{ kunde.telefon or 'N/A' }}</span></li>
+                        <li><strong>Kunde seit</strong> <span>{{ kunde.erstellt_am.strftime('%d.%m.%Y') }}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="auftrags-spalte">
+            <div class="card">
+                <div class="card-header"><h2>Auftragshistorie</h2></div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Auftrags-Nr.</th>
+                                <th>Datum</th>
+                                <th>Status</th>
+                                <th>Aktion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for auftrag in kunde.auftraege | sort(attribute='datum', reverse=True) %}
+                            <tr>
+                                <td>{{ auftrag.angebot_nr }}</td>
+                                <td>{{ auftrag.datum.strftime('%d.%m.%Y') }}</td>
+                                <td>{{ auftrag.status }}</td>
+                                <td>
+                                    <a href="{{ url_for('main.auftrag_details', auftrag_id=auftrag.id) }}" class="btn">Ansehen</a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: var(--text-secondary);">Dieser Kunde hat noch keine Aufträge.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

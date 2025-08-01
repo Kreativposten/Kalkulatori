@@ -1,122 +1,129 @@
-# kreativposten/models.py
-import datetime
-from flask_sqlalchemy import SQLAlchemy
+from . import db
+from sqlalchemy.sql import func
+import uuid
 
-db = SQLAlchemy()
+def generate_uuid():
+    return str(uuid.uuid4())
 
-# --- Datenbank Modelle ---
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+
+class Aufgabe(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    inhalt = db.Column(db.String(200), nullable=False)
+    erledigt = db.Column(db.Boolean, default=False)
+    erstellt_am = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+class Produkt(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    hersteller = db.Column(db.String(100))
+    beschreibung = db.Column(db.Text)
+    ek_netto_basis = db.Column(db.Float)
+    varianten = db.relationship('ArtikelVariante', backref='produkt', lazy=True, cascade="all, delete-orphan")
+
+class ArtikelVariante(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    produkt_id = db.Column(db.Integer, db.ForeignKey('produkt.id'), nullable=False)
+    sku = db.Column(db.String(50), unique=True, nullable=False)
+    hersteller_sku = db.Column(db.String(50))
+    farbe = db.Column(db.String(50))
+    groesse = db.Column(db.String(20))
+    einkaufspreis_netto = db.Column(db.Float)
+    lagerbestand = db.Column(db.Integer, default=0)
+    ist_standard = db.Column(db.Boolean, default=False)
+    lieferant_id = db.Column(db.Integer, db.ForeignKey('lieferant.id'), nullable=True)
+    bestellpositionen = db.relationship('Bestellposition', back_populates='artikel_variante')
+    lagerbewegungen = db.relationship('Lagerbewegung', back_populates='artikel_variante')
+
+
+class Lieferant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False, unique=True)
+    kontaktperson = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    telefon = db.Column(db.String(50))
+    artikel = db.relationship('ArtikelVariante', backref='lieferant', lazy=True)
+    bestellungen = db.relationship('Bestellung', back_populates='lieferant')
+
+
 class Angebot(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    angebot_nr = db.Column(db.String(100), nullable=False, unique=True)
-    kunde_name = db.Column(db.String(200))
-    datum = db.Column(db.DateTime, default=datetime.datetime.now)
-    angebot_data = db.Column(db.Text, nullable=False)
-    status = db.Column(db.String(50), nullable=False, default='Entwurf')
-    kunden_token = db.Column(db.String(36), unique=True, nullable=True)
+    angebot_nr = db.Column(db.String(50), unique=True, nullable=False)
+    kunde_name = db.Column(db.String(150))
+    datum = db.Column(db.Date, nullable=False)
+    kalkulations_daten = db.Column(db.Text)
+    status = db.Column(db.String(50), default='Entwurf')
+    kunden_token = db.Column(db.String(36), unique=True, nullable=False, default=generate_uuid)
+    auftrags_ereignisse = db.relationship('AuftragsEreignis', backref='auftrag', lazy='dynamic', cascade="all, delete-orphan")
+    auftrags_dateien = db.relationship('AuftragsDatei', backref='auftrag', lazy='dynamic', cascade="all, delete-orphan")
+    kunde_id = db.Column(db.Integer, db.ForeignKey('kunde.id'), nullable=True)
+
+class AuftragsEreignis(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    auftrag_id = db.Column(db.Integer, db.ForeignKey('angebot.id'), nullable=False)
+    typ = db.Column(db.String(50), nullable=False)
+    inhalt = db.Column(db.Text, nullable=False)
+    sender = db.Column(db.String(50))
+    erstellt_am = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
 class AuftragsDatei(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    original_filename = db.Column(db.String(300))
-    saved_filename = db.Column(db.String(300), unique=True)
-    upload_datum = db.Column(db.DateTime, default=datetime.datetime.now)
-    druckposition = db.Column(db.String(100), nullable=True)
-    notizen = db.Column(db.Text, nullable=True)
-    hochgeladen_von = db.Column(db.String(50), default='Kunde', nullable=False)
-    dokument_typ = db.Column(db.String(50), default='Kundendatei', nullable=False)
-    freigabe_status = db.Column(db.String(50), nullable=True)
-    freigabe_kommentar = db.Column(db.Text, nullable=True)
     auftrag_id = db.Column(db.Integer, db.ForeignKey('angebot.id'), nullable=False)
-    auftrag = db.relationship('Angebot', backref=db.backref('dateien', lazy=True, cascade="all, delete-orphan"))
+    original_filename = db.Column(db.String(255), nullable=False)
+    saved_filename = db.Column(db.String(255), nullable=False)
+    upload_datum = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    hochgeladen_von = db.Column(db.String(50))
+    dokument_typ = db.Column(db.String(50))
+    freigabe_status = db.Column(db.String(50), default='N/A')
 
     def to_dict(self):
         return {
             'id': self.id,
             'original_filename': self.original_filename,
             'saved_filename': self.saved_filename,
-            'freigabe_status': self.freigabe_status
+            'upload_datum': self.upload_datum.isoformat(),
+            'hochgeladen_von': self.hochgeladen_von,
+            'dokument_typ': self.dokument_typ,
+            'freigabe_status': self.freigabe_status,
         }
 
-class Aufgabe(db.Model):
+class Kunde(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    inhalt = db.Column(db.String(500), nullable=False)
-    erledigt = db.Column(db.Boolean, default=False, nullable=False)
-    erstellt_am = db.Column(db.DateTime, default=datetime.datetime.now)
-
-class AuftragsEreignis(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    auftrag_id = db.Column(db.Integer, db.ForeignKey('angebot.id'), nullable=False)
-    erstellt_am = db.Column(db.DateTime, default=datetime.datetime.now)
-    typ = db.Column(db.String(50), nullable=False) 
-    sender = db.Column(db.String(50), nullable=False)
-    inhalt = db.Column(db.Text, nullable=False)
-    bezogene_datei_id = db.Column(db.Integer, db.ForeignKey('auftrags_datei.id'), nullable=True)
-    
-    auftrag = db.relationship('Angebot', backref=db.backref('ereignisse', lazy=True, cascade="all, delete-orphan"))
-    datei = db.relationship('AuftragsDatei')
-
-class Produkt(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), unique=True, nullable=False)
-    hersteller = db.Column(db.String(200))
-    beschreibung = db.Column(db.Text)
-    # GUTE BENENNUNG: Wir nennen die Spalte jetzt so, wie sie gemeint ist.
-    ek_netto_basis = db.Column(db.Float, comment="Basis-Einkaufspreis Netto für das Produkt als Kalkulationsgrundlage")
-    
-    varianten = db.relationship('ArtikelVariante', backref='produkt', lazy=True, cascade="all, delete-orphan")
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'hersteller': self.hersteller,
-            'beschreibung': self.beschreibung,
-            'ek_netto_basis': self.ek_netto_basis
-        }
-
-class ArtikelVariante(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    produkt_id = db.Column(db.Integer, db.ForeignKey('produkt.id'), nullable=False)
-    farbe = db.Column(db.String(100))
-    groesse = db.Column(db.String(50))
-    sku = db.Column(db.String(100), unique=True, nullable=False)
-    hersteller_sku = db.Column(db.String(100))
-    einkaufspreis_netto = db.Column(db.Float)
-    lagerbestand = db.Column(db.Integer, nullable=False, default=0)
-    ist_standard = db.Column(db.Boolean, default=False, nullable=False)
-    lieferant_id = db.Column(db.Integer, db.ForeignKey('lieferant.id'), nullable=True)
-    __table_args__ = (db.UniqueConstraint('produkt_id', 'farbe', 'groesse', name='_produkt_farbe_groesse_uc'),)
-
-class Lieferant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), nullable=False)
-    kontaktperson = db.Column(db.String(200))
-    email = db.Column(db.String(120))
+    name = db.Column(db.String(150), nullable=False)
+    firma = db.Column(db.String(150))
+    email = db.Column(db.String(150))
     telefon = db.Column(db.String(50))
-    varianten = db.relationship('ArtikelVariante', backref='lieferant', lazy=True)
-    bestellungen = db.relationship('Bestellung', backref='lieferant', lazy=True)
+    erstellt_am = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    auftraege = db.relationship('Angebot', backref='kunde', lazy=True)
 
-class Lagerbewegung(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    menge = db.Column(db.Integer, nullable=False)
-    typ = db.Column(db.String(100), nullable=False)
-    datum = db.Column(db.DateTime, default=datetime.datetime.now)
-    notiz = db.Column(db.Text)
-    variante_id = db.Column(db.Integer, db.ForeignKey('artikel_variante.id'), nullable=False)
-    variante = db.relationship('ArtikelVariante', backref=db.backref('bewegungen', lazy=True))
-    auftrag_id = db.Column(db.Integer, db.ForeignKey('angebot.id'), nullable=True)
-    auftrag = db.relationship('Angebot')
 
+# --- NEUE MODELLE FÜR BESCHAFFUNG ---
 class Bestellung(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    bestell_nr = db.Column(db.String(100), unique=True, nullable=False)
-    status = db.Column(db.String(50), nullable=False, default='Entwurf')
-    erstellt_am = db.Column(db.DateTime, default=datetime.datetime.now)
+    bestell_nr = db.Column(db.String(50), unique=True, nullable=False)
     lieferant_id = db.Column(db.Integer, db.ForeignKey('lieferant.id'), nullable=False)
-    positionen = db.relationship('Bestellposition', backref='bestellung', lazy=True, cascade="all, delete-orphan")
+    erstellt_am = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    status = db.Column(db.String(50), default='Offen')
+    lieferant = db.relationship('Lieferant', back_populates='bestellungen')
+    positionen = db.relationship('Bestellposition', back_populates='bestellung', cascade="all, delete-orphan")
 
 class Bestellposition(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    menge = db.Column(db.Integer, nullable=False)
-    variante_id = db.Column(db.Integer, db.ForeignKey('artikel_variante.id'), nullable=False)
     bestellung_id = db.Column(db.Integer, db.ForeignKey('bestellung.id'), nullable=False)
-    variante = db.relationship('ArtikelVariante')
+    artikel_variante_id = db.Column(db.Integer, db.ForeignKey('artikel_variante.id'), nullable=False)
+    menge = db.Column(db.Integer, nullable=False)
+    einzelpreis_netto = db.Column(db.Float)
+    bestellung = db.relationship('Bestellung', back_populates='positionen')
+    artikel_variante = db.relationship('ArtikelVariante', back_populates='bestellpositionen')
+
+class Lagerbewegung(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    artikel_variante_id = db.Column(db.Integer, db.ForeignKey('artikel_variante.id'), nullable=False)
+    menge = db.Column(db.Integer, nullable=False) # Positiv für Zugang, negativ für Abgang
+    typ = db.Column(db.String(50)) # z.B. 'Wareneingang', 'Verkauf', 'Korrektur'
+    referenz = db.Column(db.String(100)) # z.B. Bestellnummer, Auftragsnummer
+    erstellt_am = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    artikel_variante = db.relationship('ArtikelVariante', back_populates='lagerbewegungen')

@@ -1,88 +1,140 @@
-# kreativposten/blueprints/kalkulator.py
-import os
-import uuid
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, current_app
 import json
-from flask import Blueprint, render_template, request, jsonify, current_app
-from werkzeug.utils import secure_filename
-from ..models import db, Produkt, Angebot, ArtikelVariante
-from ..pricing import MARGE_PROZENT, MWST_SATZ, perform_calculation
-from ..utils import log_ereignis
+from datetime import date
+from ..pricing import calculate_price # Annahme, dass pricing.py im Hauptverzeichnis ist
+from ..models import Angebot, ArtikelVariante, Kunde # Angepasst
+from .. import db # Angepasst
 
-kalkulator_bp = Blueprint('kalkulator', __name__, template_folder='../templates')
+kalkulator = Blueprint('kalkulator', __name__)
 
-@kalkulator_bp.route('/kalkulator')
+@kalkulator.route('/kalkulator')
 def calculator_page():
-    # Helper-Funktion, um Produktdaten für das Template aufzubereiten
-    def prepare_product_data(produkte):
-        produkt_dicts = []
-        for p in produkte:
-            # HIER WAR DER TIPPFEHLER: ek_netto_basis statt ek_net_basis
-            vk_brutto = (p.ek_netto_basis * (1 + MARGE_PROZENT)) * (1 + MWST_SATZ) if p.ek_netto_basis is not None else 0.0
-            produkt_dicts.append({
-                'id': p.id,
-                'name': p.name,
-                'basis_vk_brutto': vk_brutto,
-                'einkaufspreis_netto_produkt_fuer_kalkulation': p.ek_netto_basis
-            })
-        return sorted(produkt_dicts, key=lambda x: x['name'])
+    load_id = request.args.get('load_id')
+    angebot_daten = None
+    if load_id:
+        angebot = Angebot.query.get(load_id)
+        if angebot:
+            angebot_daten = angebot.kalkulations_daten
 
-    # 1. Standardprodukte holen
-    standard_produkte_query = db.session.query(Produkt).join(ArtikelVariante).filter(ArtikelVariante.ist_standard == True).distinct().all()
-    standard_produkte_data = prepare_product_data(standard_produkte_query)
-    standard_ids = {p.id for p in standard_produkte_query}
+    # Lade Standard- und Katalogprodukte
+    standard_produkte_query = ArtikelVariante.query.filter_by(ist_standard=True).all()
+    standard_produkte = [
+        {
+            'id': v.id,
+            'produkt_name': v.produkt.name,
+            'hersteller': v.produkt.hersteller,
+            'farbe': v.farbe,
+            'groesse': v.groesse,
+            'ek_netto': v.einkaufspreis_netto
+        } for v in standard_produkte_query
+    ]
+    
+    # Vereinfacht für das Beispiel - Annahme: Alle Varianten sind Katalogprodukte
+    katalog_produkte_query = ArtikelVariante.query.all()
+    katalog_produkte = [
+        {
+            'id': v.id,
+            'produkt_name': v.produkt.name,
+            'hersteller': v.produkt.hersteller,
+            'farbe': v.farbe,
+            'groesse': v.groesse,
+            'ek_netto': v.einkaufspreis_netto
+        } for v in katalog_produkte_query
+    ]
 
-    # 2. Katalogprodukte holen (alle, die nicht Standard sind)
-    katalog_produkte_query = Produkt.query.filter(Produkt.id.notin_(standard_ids)).all()
-    katalog_produkte_data = prepare_product_data(katalog_produkte_query)
 
     return render_template('index.html', 
-                           active_page='kalkulator', 
-                           standard_produkte=standard_produkte_data,
-                           katalog_produkte=katalog_produkte_data)
+                           angebot_daten=angebot_daten,
+                           standard_produkte=standard_produkte,
+                           katalog_produkte=katalog_produkte)
 
 
-@kalkulator_bp.route('/upload-image', methods=['POST'])
-def upload_image():
-    if 'file' not in request.files:
-        return jsonify({'success': False, 'error': 'Keine Datei im Request'}), 400
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'success': False, 'error': 'Keine Datei ausgewählt'}), 400
-    if file:
-        original_fn = secure_filename(file.filename)
-        unique_fn = str(uuid.uuid4()) + "_" + original_fn
-        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], unique_fn))
-        return jsonify({'success': True, 'filename': unique_fn})
-    return jsonify({'success': False, 'error': 'Unbekannter Fehler'}), 500
+@kalkulator.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.get_json()
+    # Hier wird die Preisberechnungslogik aufgerufen
+    # Die Funktion 'calculate_price' muss die 'data' verarbeiten können
+    results = calculate_price(data)
+    return jsonify(results)
 
-@kalkulator_bp.route('/save-angebot', methods=['POST'])
+def get_next_angebot_nr():
+    today = date.today()
+    prefix = f"{today.strftime('%d%m%y')}-"
+    last_angebot = Angebot.query.filter(Angebot.angebot_nr.like(f"{prefix}%")).order_by(Angebot.angebot_nr.desc()).first()
+    
+    if last_angebot:
+        last_nr_str = last_angebot.angebot_nr.split('-')[-1]
+        try:
+            # Versuche, den Suffix in eine Zahl umzuwandeln
+            last_nr = int(last_nr_str)
+            new_nr = last_nr + 1
+            return f"{prefix}{new_nr}"
+        except ValueError:
+            # Wenn der Suffix keine Zahl ist, beginne mit 1
+             return f"{prefix}1"
+    else:
+        return f"{prefix}1"
+
+
+@kalkulator.route('/save-angebot', methods=['POST'])
 def save_angebot():
     data = request.get_json()
     angebot_id = data.get('id')
-    
-    calc_result = perform_calculation(data)
-    angebot_nr = calc_result.get('angebot_nr', 'TEMP-NR')
-    data['angebot_nr'] = angebot_nr
-    
-    existing_angebot = Angebot.query.get(angebot_id) if angebot_id else None
-    
-    if existing_angebot:
-        existing_angebot.angebot_nr = angebot_nr
-        existing_angebot.kunde_name = data.get('kunde',{}).get('firma') or data.get('kunde',{}).get('name') or "Unbenannt"
-        existing_angebot.angebot_data = json.dumps(data)
-        message = f"Entwurf {angebot_nr} wurde aktualisiert!"
-        db.session.commit()
-        return jsonify({'success': True, 'message': message, 'angebot_id': existing_angebot.id, 'angebot_nr': angebot_nr})
+
+    # Finde oder erstelle einen Kunden
+    kunde_name = data.get('kunde', {}).get('name')
+    kunde = None
+    if kunde_name:
+        kunde = Kunde.query.filter_by(name=kunde_name).first()
+        if not kunde:
+            kunde = Kunde(name=kunde_name, firma=data.get('kunde', {}).get('firma'))
+            db.session.add(kunde)
+            # Commit ist hier noch nicht nötig, wird unten gemacht
+
+    if angebot_id:
+        # Bestehendes Angebot aktualisieren
+        angebot = Angebot.query.get(angebot_id)
+        if angebot:
+            angebot.kunde_name = data.get('kunde', {}).get('name')
+            angebot.kalkulations_daten = json.dumps(data)
+            angebot.status = 'Entwurf'
+            if kunde:
+                angebot.kunde_id = kunde.id
+        else:
+            return jsonify({'status': 'error', 'message': 'Angebot nicht gefunden'}), 404
     else:
-        neues_angebot = Angebot(
+        # Neues Angebot erstellen
+        angebot_nr = get_next_angebot_nr()
+        angebot = Angebot(
             angebot_nr=angebot_nr,
-            kunde_name=data.get('kunde',{}).get('firma') or data.get('kunde',{}).get('name') or "Unbenannt", 
-            angebot_data=json.dumps(data), 
-            kunden_token=str(uuid.uuid4()),
+            kunde_name=data.get('kunde', {}).get('name'),
+            datum=date.today(),
+            kalkulations_daten=json.dumps(data),
             status='Entwurf'
         )
-        db.session.add(neues_angebot)
-        db.session.commit()
-        log_ereignis(neues_angebot.id, 'system', f"Angebot {neues_angebot.angebot_nr} wurde als Entwurf erstellt.", 'Admin')
-        message = f"Neuer Entwurf {neues_angebot.angebot_nr} wurde gespeichert!"
-        return jsonify({'success': True, 'message': message, 'angebot_id': neues_angebot.id, 'angebot_nr': angebot_nr})
+        if kunde:
+            angebot.kunde_id = kunde.id
+        db.session.add(angebot)
+
+    db.session.commit()
+    return jsonify({'status': 'success', 'id': angebot.id, 'angebot_nr': angebot.angebot_nr})
+
+# --- PLATZHALTER FÜR PDF- UND SENDEN-ROUTEN ---
+
+@kalkulator.route('/angebot/<int:angebot_id>/senden', methods=['POST'])
+def angebot_senden(angebot_id):
+    # Logik zum Senden des Angebots per E-Mail
+    flash('Angebot senden ist noch nicht implementiert.', 'info')
+    return redirect(url_for('main.produktion'))
+
+@kalkulator.route('/generate-pdf/<int:angebot_id>')
+def generate_pdf_final(angebot_id):
+    # Logik zur Generierung des Angebots-PDFs
+    flash('PDF-Generierung ist noch nicht implementiert.', 'info')
+    return redirect(url_for('main.produktion'))
+
+@kalkulator.route('/angebot/<int:angebot_id>/erstelle-auftrag', methods=['POST'])
+def erstelle_auftrag(angebot_id):
+    # Logik zum Umwandeln eines Angebots in einen Auftrag
+    flash('Angebot annehmen ist noch nicht implementiert.', 'info')
+    return redirect(url_for('main.produktion'))
