@@ -1,0 +1,3411 @@
+Colour-Code,Colour-Name,SortOrder
+001,white,1
+002,black,13
+003,navy,516
+004,red,384
+005,abyss blue,559
+007,all black,14
+012,all navy,528
+016,apple,241
+017,navy/burgundy/khaki,1124
+018,dark mustard,1125
+019,aqua blue/black,1426
+020,anthracite,35
+021,anthracite melange,31
+022,aqua,282
+023,blue,585
+024,camel,130
+025,carbon,68
+026,chalk,116
+027,cool grey,111
+028,dark green,203
+029,fluorescent orange,355
+030,fluorescent yellow,311
+031,gold yellow,329
+032,grass,248
+033,green,217
+034,grey heather,45
+035,irish green,238
+037,light blue,115
+038,light green,245
+039,light grey,100
+040,light pink,464
+041,light yellow,293
+042,lime green,251
+043,mid grey,93
+044,neon orange,337
+045,neon yellow,345
+046,night blue,525
+047,off white,6
+048,pink,397
+049,rose,448
+050,royal,546
+051,signal red,380
+052,stone,81
+053,terra,366
+054,wine,165
+055,scarlet red,390
+056,navy blue,517
+057,bright royal,560
+058,blue midnight,523
+059,black opal,17
+061,arctic/black,993
+062,arctic/graphite/black,992
+063,army/black,1039
+064,baby blue,649
+065,biscuit,135
+066,bordeaux,490
+068,chrome,653
+069,colored,0
+070,dark brown,151
+071,dark grey melange,39
+072,dark khaki,193
+073,dark navy,515
+074,forest green,201
+075,graphite,58
+076,grey,45
+077,grey melange,40
+079,jade,227
+080,kiwi,229
+081,light khaki,194
+082,maroon,158
+083,mauve,476
+084,mocca,160
+085,mustard,1500
+086,neon green,263
+087,neon pink,377
+088,poppy red,385
+089,silver grey,95
+090,steel blue,557
+091,sunny lime,334
+092,violet,478
+093,apple green,273
+094,aqua blue,606
+095,aubergine,513
+096,avocado,0
+100,natural,128
+101,candy pink,450
+103,citrus,0
+105,cobalt blue,573
+106,daffodil yellow,0
+107,dark orange,364
+108,dark red,361
+111,denim blue,575
+112,praline rose,0
+113,honey,132
+114,indigo blue,552
+118,lavender,475
+120,sand,122
+122,lime,262
+123,mandarin,348
+125,beige,121
+127,melange grey,65
+130,cream,114
+134,orange peel,0
+135,pale pink,469
+136,papaya,0
+138,river blue,0
+140,chocolate,150
+145,brown,149
+146,slate grey,52
+147,soft green,0
+150,bear brown,155
+151,strawberry,0
+152,sunflower yellow,0
+153,tomato,391
+157,zinc,41
+158,army/orange,1038
+159,atoll blue,659
+161,aztec blue,579
+162,azure blue,591
+164,banana,295
+165,beige/brown,995
+167,birch,112
+168,black cord,15
+169,black melange,14
+170,black/brown,0
+171,black/cardinal red,783
+175,black/french navy,792
+176,black/graphite,797
+177,black/green,798
+179,black/greystone,805
+182,black/iron/white,806
+184,black/light grey/red,809
+185,black/light grey/white,810
+186,black/medium grey,813
+187,black/natural,815
+188,black/orange/white,826
+192,black/slate grey,839
+197,black/yellow,858
+198,black/zinc,862
+200,yellow,288
+202,bottle,204
+203,bottle/black,1051
+207,bright green/white,1089
+208,bright pink,465
+209,bright red,385
+210,gold,316
+212,bright sky,651
+213,bright yellow,304
+214,bronze,139
+215,bronze/army,1000
+220,apricot,341
+221,burgundy/natural,1295
+222,burgundy/navy,1305
+223,burnt orange,351
+225,burnt orange/light grey,1214
+226,cactus,228
+227,cappuccino,156
+229,cardinal red,405
+230,pumpkin orange,358
+231,caribbean blue,647
+232,carmine red,416
+235,orange,347
+236,sunset orange,370
+237,chalk white,119
+238,charcoal grey,37
+239,charcoal/black,870
+240,charcoal/pampas/pale grey,871
+247,classic pink,459
+248,classic red,403
+251,coffee/black,171
+253,convoy grey,46
+254,cool blue,628
+255,coral,368
+256,corde,127
+260,dark chocolate,163
+261,dark grey/black,890
+262,dark grey/grey,880
+263,dark grey/orange,894
+266,deep grey melange,66
+268,earth,166
+269,earth cord,153
+270,ecru,120
+273,ecru/navy/ecru,988
+274,ecru/red,987
+277,emerald,213
+285,flamenco red,394
+286,flash pink,451
+287,forest,211
+288,forest green/light grey/white,1069
+290,french navy,521
+291,french navy/black,1334
+292,french navy/ice blue,1335
+295,fuchsia/white,1268
+296,gold/black,1179
+298,gold/graphite/black,1176
+300,soft pink,471
+301,gold/white,1175
+302,romantic pink,467
+303,golf green,208
+304,golf green/white,1062
+305,grape,507
+306,graphite/black,912
+310,fuchsia,432
+311,sorbet,431
+312,grey mist,87
+313,grey/black,867
+317,grey/red,875
+318,grey/white,953
+320,pink lipstick,428
+323,ice/denim,1463
+325,iris blue,652
+326,ivory,123
+329,kelly green/white,1073
+332,khaki/burgundy,1022
+333,khaki/khaki,1021
+334,khaki/navy,1020
+338,lemon,289
+340,grey heather,45
+342,light brown,152
+343,light green/white,1128
+344,light grey/red,960
+345,light orange,339
+346,light oxford,96
+347,light purple,485
+348,light royal blue,604
+349,lime/black,271
+350,purple,481
+351,lime/charcoal/pale grey,1121
+352,lime/white,1129
+353,mastic,131
+354,med blue,0
+355,medium pink,468
+356,mouse grey,48
+361,navy/black,1314
+366,navy/granite,1344
+368,navy/greystone,1345
+370,burgundy,489
+371,deep red,402
+373,navy/iron/white,1346
+374,navy/khaki,1347
+376,navy/light grey/white,1377
+377,navy/medium grey,1325
+381,navy/pink,1378
+384,navy/silver,1368
+385,navy/sky,1323
+386,new mandarin orange,365
+390,orange/graphite/black,1208
+391,orange/grey,1205
+393,orange/light grey,1203
+394,orange/light grey/white,1202
+395,orange/navy,1216
+396,orchid pink,455
+397,orchid pink/white,1277
+398,oxford grey,34
+401,ice blue,610
+403,pale yellow,285
+404,parma,473
+405,peach,345
+410,sky blue,639
+413,pink/white,1276
+415,corporate blue,620
+416,port,425
+417,pure gold,336
+418,racing red,400
+420,oxford blue,642
+428,red/granite,1260
+429,red/graphite,1239
+430,azure,583
+431,red/graphite/black,1242
+432,red/grey,1233
+433,red/greystone,1259
+435,light aqua,0
+436,red/light grey/white,1232
+437,red/medium grey,1241
+440,turquoise,655
+441,atoll,624
+442,swimming pool,662
+443,red/navy/red,1238
+445,diva blue,672
+447,royal blue/black,1402
+448,royal blue/graphite,1408
+450,royal blue,556
+451,royal blue/yellow,1405
+454,royal/navy/pale grey,1383
+455,rusty,164
+456,saffron,340
+460,stone blue,603
+461,seal brown/dune/whi,1002
+462,seal brown/white,1001
+464,sky,641
+465,sky blue/black,1450
+467,sky blue/white,1451
+468,sky/black,1458
+469,sky/light grey/white,1465
+470,denim,568
+471,sky/white,1466
+472,slate grey/black,928
+473,slate grey/light grey/black,929
+476,sport yellow/black,1162
+479,stadium red/black,1262
+480,light navy,538
+481,stadium red/black/w,1261
+482,steel grey/black,935
+483,stone/brown,1462
+484,storm grey,0
+488,sunshine yellow,291
+489,tan/black,1010
+490,indigo,549
+491,tango red,423
+492,texas orange,373
+493,titanium,53
+495,true pink,456
+498,white/forest green,704
+499,white/french navy,705
+500,white/grey melange,712
+505,white/iron/white,716
+506,white/light grey/royal blue,721
+508,mint,274
+510,pistachio,270
+511,white/sky blue,748
+515,winter emerald,669
+516,yellow haze,310
+519,yellow/light grey/black,1152
+520,kelly green,224
+521,yellow/navy/yellow,1163
+524,frog,267
+525,black/gold yellow/white,795
+526,royal/white/sky blue,1401
+527,green/gold yellow/light grey,1095
+528,beige/black/dark grey,985
+529,royal/white/light grey,1397
+530,red/navy/light grey,1250
+531,black/dark grey/light grey,789
+533,beige/black,986
+535,olive brown,195
+537,pink/light grey,1275
+538,lime green/light grey,1117
+539,sunny lime/light grey,1186
+540,bottle green,202
+541,white/light grey,720
+542,red/light grey,1237
+543,royal/light grey,1392
+544,olive/natural,1032
+546,dark brown/khaki,1011
+548,green moss,177
+549,army,190
+550,olive,185
+555,khaki,173
+556,mud,168
+557,white/dark green,699
+559,black/black/black,775
+560,berry,434
+561,currant,502
+562,deep heather,50
+563,granite,94
+564,kelly,221
+565,leaf,225
+566,lilac,472
+567,lime wedge,284
+568,midnight,527
+569,mocha,144
+570,moss green,206
+571,ocean blue,640
+572,orange sorbet,346
+573,pale blue,654
+574,plum,495
+575,raspberry,482
+576,seafoam blue,656
+577,teal,215
+578,true royal,584
+579,deep teal,577
+580,petrol,671
+581,navy/white/sky blue,1371
+582,black/grey/white,804
+583,burgundy/khaki,1296
+584,sunny lime/orange,1185
+585,kiwi/white,1077
+586,irish green/white,1087
+587,mauve/pink,1282
+588,burgundy/beige,1298
+589,brown/orange,1003
+590,light grey melange,100
+591,gold yellow/navy,1184
+595,orange/carbon,1198
+596,aubergine/white,1307
+599,red/grey heather,1253
+600,ash,44
+602,black/grey heather,801
+605,frog/white,1109
+606,green/navy,1098
+609,aqua/navy,1437
+610,heather grey,99
+611,fuchsia/pink,1272
+612,baby blue/navy,1453
+618,white/baby blue,683
+620,sport grey,47
+622,white/pink,738
+624,red/dark navy,0
+629,wine/navy,0
+630,beige/khaki,0
+634,olive/black,199
+637,white/dark navy,0
+638,white/grey,710
+639,white/grey heather,0
+640,silver,80
+645,sky blue/navy,0
+646,aqua blue/white,1427
+647,dark navy/limestone,0
+648,limestone/dark navy,0
+650,steel grey,73
+651,royal blue/white,1403
+652,forest green/limestone,0
+653,red/black/white,1223
+654,red/green/gold yellow,1254
+657,red/white/black,1245
+659,red/yellow,1229
+660,charcoal,36
+662,grey/black/white,950
+663,navy/beige,1313
+664,navy/beige/navy,1357
+665,navy/dark green,1359
+667,navy/gold yellow,1361
+668,navy/grey,534
+669,navy/light blue/white,1364
+670,dark grey,39
+672,navy/orange,1320
+673,navy/red/navy,1366
+674,navy/royal/white,1322
+675,navy/white/light grey,1369
+677,navy/white/red,1370
+678,navy/yellow,1324
+681,beige/dark green,984
+682,beige/navy/beige,983
+683,black/beige,771
+684,black/beige/black,772
+685,black/charcoal,784
+687,black/gold yellow,794
+691,black/red/gold yellow,832
+693,black/red/white,834
+696,black/royal blue,835
+699,black/white/dark green,845
+700,very yellow,325
+703,black/white/dark grey,847
+704,very berry,427
+705,very turquoise,658
+706,black/white/light grey,849
+707,black/white/red,852
+708,black/white/royal,853
+712,khaki/black,1029
+713,khaki/navy/white,1027
+716,lilac/white,1281
+718,olive/beige,1037
+719,olive/gold yellow,1035
+722,pink sixties,470
+726,royal/pink,1394
+728,royal/white/navy,1398
+729,royal/white/red,1399
+732,real green,253
+733,real turquoise,664
+740,used yellow,307
+741,used gold,338
+743,used raspberry,486
+744,used violet,477
+745,used wasabi,266
+747,used brown,148
+748,used black,29
+750,chic white,2
+751,chic navy,542
+752,chic violet,487
+753,chic green,240
+754,chic black,19
+755,straw/red,1500
+758,white/aqua,678
+759,white/baby pink,684
+766,white/gold yellow,706
+767,white/light blue,719
+770,ultra yellow,301
+772,ultra pink,441
+773,ultra green,254
+774,white/lime green,723
+778,white/orange,735
+780,white/red/black,740
+781,white/red/navy,741
+785,white/turquoise,753
+792,orange/white/royal,1196
+793,yellow/black/white,1147
+794,yellow/light grey,1144
+795,yellow/navy,1137
+796,yellow/royal,1151
+797,yellow/white,1143
+800,camouflage,1500
+805,aqua/white,1438
+806,berry/black,1270
+807,black/anthracite,766
+808,black/black,774
+809,black/carbon,781
+810,black/dark grey,787
+812,black/light grey,807
+813,black/orange,824
+814,black/red,830
+817,black/silver,836
+819,blue/white,1416
+826,burgundy/black,1297
+828,carbon/black,914
+829,carbon/orange,916
+830,dark green/black,1054
+833,fluo yellow/black,1158
+834,gold yellow/white,1180
+836,graphite/aqua,883
+839,grass/navy,1104
+841,green/black,1091
+844,green/white,1072
+848,lagoon/white,1467
+850,light blue/navy,1446
+851,light grey/black,956
+853,lime green/white,1132
+856,navy/light blue,1348
+857,navy/navy,1349
+858,navy/red,1321
+859,navy/red/white,1367
+860,navy/royal,530
+863,ocean/black,1468
+864,ocean/white,1469
+867,olive/lime green,1034
+869,orange/aqua,1193
+871,orange/white,1197
+873,pop orange/black,1215
+874,purple/white,1286
+876,red/black,1224
+878,red/carbon,1256
+879,red/gold yellow,1255
+881,red/navy,1221
+882,red/white/navy,1244
+883,royal/black,1381
+885,royal/navy,1382
+887,royal/red,1395
+888,royal/white,1387
+890,sport grey/navy,937
+891,stone/black,1470
+894,terra/navy,1206
+896,turquoise/white,1476
+898,white/burgundy,0
+899,white/green,708
+900,white/ocean,732
+901,white/royal,744
+902,white/white,754
+903,white/red,739
+905,natural/navy,1155
+906,natural/navy/dark khaki,1161
+907,white/royal blue,745
+908,white/navy,726
+910,white/black,686
+911,white/sky grey,749
+920,burgundy/white,1293
+924,dark grey/light grey,893
+926,dark grey/red/white,933
+927,dark grey/white,865
+929,turquoise/lime green,1481
+934,dark green/beige,1053
+937,orange/black,1199
+938,dark green/natural,1057
+939,dark green/red/dark green,1058
+940,dark green/red/khaki,1059
+941,red/white,1219
+943,dark green/white,1060
+945,dark green/white/black,1061
+947,dark khaki/maroon/white,1044
+948,dark khaki/natural/light khaki,1043
+954,light blue/dark brown,1471
+956,light blue/off whit,1473
+957,bottle green/white,1052
+959,light blue/white,1447
+960,ice blue/dark grey,1475
+961,light grey/black/light grey,967
+962,light grey/black/white,968
+963,navy/white,1316
+964,light grey/burgundy,969
+965,light grey/dark grey,970
+966,lightgrey/dark grey/black,977
+967,light grey/red/black,974
+971,light pink/light blue/white,1278
+972,dark grey/ice blue,874
+974,light pink/pink/white,1279
+975,light pink/white,1280
+976,lime green/black,1115
+980,black/white,844
+981,black/grey,800
+983,yellow/black,1135
+985,lime green/royal,1119
+989,gold yellow/navy/white,1183
+990,gold yellow/red,1182
+991,gold yellow/royal/red,1181
+993,light khaki/black,1042
+994,light khaki/navy,1041
+997,neon orange/neon yellow,1188
+998,neon yellow/neon orange,1150
+a03,black/light grey/green,808
+a04,black/lime,811
+a05,black/orange/black,825
+a06,black/red/black,831
+a07,bordeaux/light grey/white,1306
+a08,dark grey/dark grey,892
+a09,dark grey/orange/dark grey,895
+a10,dark pink,443
+a12,fine grey,102
+a13,forest green/beige,1068
+a14,green olive,189
+a20,navy/grey/navy,1374
+a21,navy/light grey/orange,1375
+a22,navy/light grey/royal blue,1376
+a25,royal blue/white/yellow,1404
+a27,true yellow,322
+a29,white/silver,747
+a30,yellow/grey,1153
+a32,dove grey,86
+a36,deep navy,520
+a37,light graphite,47
+a38,classic olive,186
+a39,sunflower,318
+a40,brick red,410
+a45,olive plaid,182
+a46,black/granite,796
+a47,sport red/granite,1235
+a51,seal brown,159
+a56,bright green,243
+a57,fir green,216
+a58,medium burgundy,500
+a59,deep charcoal,59
+a60,dark purple,488
+a61,chili,404
+a62,light grey/white,949
+a63,natural/navy/natural,1154
+a66,dune,134
+a67,dune/graphite/black,989
+a68,fuchsia/black,1267
+a70,shiny black,27
+a71,shiny black/white,863
+a73,shiny white/black,761
+a74,turquoise/black,1477
+a75,urban grey,60
+a79,light gold,0
+a80,red/red,1231
+a82,coffee,157
+a84,glossy black,24
+a85,deluxe blue,597
+a86,deluxe red,382
+a87,deluxe purple,479
+a88,deluxe grey,69
+a96,ash grey,109
+a97,asphalt,56
+a99,athletic heather,90
+aa1,guave,0
+aa2,dusty rose,0
+aa3,asphalt/black,0
+aa4,clay/black,0
+aa5,dusty pink,0
+aa6,french navy/soft white,0
+aa7,soft white/classic red,0
+aa8,soft white/french navy,0
+aa9,navy/magma,0
+aaa,cloud grey,0
+aab,festival fuchsia,0
+aac,marine green,0
+aad,natural stone,0
+aae,pumpkin,0
+aaf,walnut,0
+aag,alpine peaks,0
+aah,desert peaks,0
+aai,glacier peaks,0
+aaj,rocky peaks,0
+aak,bright lavender,0
+aal,light grey fleck,0
+aam,navy fleck,0
+aan,oatmeal fleck,0
+aao,biscuit/black,0
+aap,walnut/black,0
+aaq,olive green/oatmeal,0
+aar,desert sand/black,0
+aas,black/cherry,0
+aat,fresh green/black,0
+aau,pure red,0
+aav,cardinal,0
+aaw,twilight camo,0
+aax,black/fluorescent orange,0
+aay,black/fluorescent pink,0
+aaz,black/fluorescent yellow,0
+ab0,black/stone,0
+ab1,bright red/off white,0
+ab2,black/bright red,0
+ab3,french navy/fuchsia,0
+ab4,off white/bright red,0
+ab5,off white/french navy,0
+ab6,forager fusion,0
+ab7,liquorice zing,0
+ab8,sherbet dip,0
+ab9,lavender/french navy,0
+aba,teal/french navy,0
+abb,burgundy/gold,0
+abc,alpine blues,0
+abd,arctic/dawn,0
+abe,arctic dawn,0
+abf,autumn moss,0
+abg,black jacks,0
+abh,cherry sherbet,0
+abi,chilli blues,0
+abj,crackling campfire,0
+abk,electric grey,0
+abl,lavender fizz,0
+abm,marine splash,0
+abn,milkshake mix,0
+abo,morning frost,0
+abp,retro blues,0
+abq,watermelon breeze,0
+abr,winter berries,0
+abs,deep purple,0
+abt,sea turquoise,0
+abu,terracotta red,0
+abv,charcoal herringbone,0
+abw,navy herringbone,0
+abx,candyfloss,0
+aby,caper green,0
+abz,earthy green,0
+ac0,ink blue,0
+ac1,moka brown,0
+ac2,orion blue,0
+ac3,sweet grey,0
+ac4,beige heather,0
+ac5,arandano red,0
+ac6,cumin yellow,0
+ac7,curcuma,0
+ac8,delphinium blue,0
+ac9,dusty light green,0
+aca,light violet,0
+acb,radiant orchid,0
+acc,wet sand,0
+acd,dark royal blue/black,0
+ace,marl grey/black,0
+acf,marl grey/sporty navy,0
+acg,sporty grey/black,0
+ach,design,0
+aci,blueberry cheesecake,0
+acj,black cherry,0
+ack,blue steel,0
+acl,dijon blue,0
+acm,marshmallow sundae,0
+acn,field camo,0
+aco,urban camo,0
+acp,forest green/taupe,0
+acq,french navy/taupe,0
+acr,chilli red,0
+acs,blue linen,0
+act,grey linen,0
+acu,warm sand,0
+acv,olive green/stone,0
+acw,black/jungle camo,0
+acx,black/midnight camo,0
+acy,columbia blue/navy,0
+acz,navy/cardinal/white,0
+ad0,igendeine,0
+ad1,mineral grey/ash,0
+ad2,ash/black,0
+ad3,strong blue/navy,0
+ad4,black/orange pop,0
+ad5,fresh pink,0
+ad6,vintage light blue,0
+ad7,vintage mustard,0
+ad8,vintage sage green,0
+ad9,petrol blue,0
+ada,mountain blue,0
+adb,antique gold,0
+adc,banana cream,0
+add,classic orange,0
+ade,graphit black,0
+adf,heavy metal,0
+adg,midnight navy,0
+adh,royal pine,0
+adi,stonewash denim,0
+adj,tahiti blue,0
+adk,premium heather,0
+adl,vintage royal,0
+adm,heather white,0
+adn,espresso,0
+ado,heather forest green,0
+adp,heather maroon,0
+adq,silk,0
+adr,heather heavy metal,0
+ads,solid navy,0
+adt,ceil blue,0
+adu,clean green,0
+adv,dynamo grey,0
+adw,calm pink,0
+adx,navy marl,0
+ady,white sand,0
+adz,maroon/grey,0
+ae0,charcoal/neon green,0
+ae1,charcoal/neon orange,0
+ae2,charcoal/navy,0
+ae3,coyote brown/black,0
+ae4,evergreen/white,0
+ae5,steel blue/silver,0
+ae6,rustic orange/khaki,0
+ae7,canary,0
+ae8,light heather blue,0
+ae9,deep wine,0
+aea,light grey marl,0
+aeb,blue melange/charcoal melange,0
+aec,black raw,0
+aed,blue raw,0
+aee,light rose/white,0
+aef,charcoal/white,0
+aeg,kanati camo pattern,0
+aeh,blue topaz,0
+aei,dark emerald,0
+aej,moonstone,0
+aek,rose quartz,0
+ael,hazelnut,0
+aem,batik mint,0
+aen,batik lavender,0
+aeo,grey/khaki,0
+aep,silver melange/white,0
+aeq,grey/melange,0
+aer,toffee/black,0
+aes,blue tones,0
+aet,earth tones,0
+aeu,charcoal solid,0
+aev,dark grey marl,0
+aew,camo tree,0
+aex,heather grey solid,0
+aey,light blue denim,0
+aez,black/grey denim,0
+af0,green camo/black,0
+af1,black/green camo,0
+af2,black camo,0
+af3,olive camo,0
+af4,black/fluorescent lime,0
+af5,green camo,0
+af6,black/fire red/green,0
+af7,white/fire red/green,0
+af8,purple turquoise,0
+af9,black/paisley,0
+afa,wood camo,0
+afb,olive night,0
+afc,oak,0
+afd,dark camo,0
+afe,beige camo,0
+aff,dark beige camo,0
+afg,poseidon black,0
+afh,wideland,0
+afi,neon orange/white/olive,0
+afj,shadow grey,0
+afk,forest night,0
+afl,blue grey,0
+afm,covert green,0
+afn,wood camo/black,0
+afo,dark camo/black,0
+afp,camo/black,0
+afq,magic mango,0
+afr,cosmo pink,0
+afs,batik black/white,0
+aft,batik orange/white,0
+afu,grey stripe,0
+afv,red stripe,0
+afw,black bast,0
+afx,nature bast,0
+afy,blossom,0
+afz,duck egg blue,0
+ag0,natural/olive green,0
+ag1,black multicam,0
+ag2,natural/orange rust,0
+ag3,italian blue,0
+ag4,wet sand/black,0
+ag5,mid navy/midnight navy heather,0
+ag6,fluorescent fuchsia,0
+ag7,glacier grey,0
+ag8,light marsala,0
+ag9,patriot blue,0
+aga,shale grey,0
+agb,reflex blue/white/french red,0
+agc,sand washed,0
+agd,washed navy blue,0
+age,washed organic black,0
+agf,sporty marine,0
+agg,dark royal blue/navy,0
+agh,sporty red/black,0
+agi,black/sporty grey,0
+agj,duck blue heather,0
+agk,navy/fluorescent yellow,0
+agl,khaki/light grey,0
+agm,shale grey/light grey,0
+agn,absolute white,0
+ago,astral purple,0
+agp,pool blue,0
+agq,black olive,0
+agr,khaki green,0
+ags,hi vis yellow/hi vis orange,0
+agt,hi vis yellow/t-rex,0
+agu,neon green/ufo,0
+agv,neon pink/unicorn,0
+agw,blue/tractor,0
+agx,silver/fire department,0
+agy,hi vis yellow/lion,0
+agz,hi vis yellow/moose,0
+ah0,hi vis yellow/elephant,0
+ah1,hi vis yellow/dog,0
+ah2,hi vis yellow/polar bear,0
+ah3,dark shadow,0
+ah4,hibiscus pink,0
+ah5,taxi yellow,0
+ah6,dark shadow/dark shadow,0
+ah7,ultra violet,0
+ah8,paradise orange,0
+ah9,neo mint,0
+aha,pale leaf,0
+ahb,light asphalt,0
+ahc,bark,0
+ahd,purple night,0
+ahe,union beige/black,0
+ahf,cherry,0
+ahg,dusk rose,0
+ahh,soft salvia,0
+ahi,union beige,0
+ahj,dark grey white,0
+ahk,grey black,0
+ahl,blue mint,0
+ahm,ready for dye,0
+ahn,magnet,0
+aho,viola blue,0
+ahp,forgotten orange,0
+ahq,beryl blue,0
+ahr,pale moss,0
+ahs,baltic blue,0
+aht,blanc white,0
+ahu,light mint,0
+ahv,retro green,0
+ahw,navy/bordeaux,0
+ahx,navy/sapphire,0
+ahy,navy/bottle green,0
+ahz,navy/teal,0
+ai0,navy/purple,0
+ai1,raw,0
+ai2,white/lime,0
+ai3,brown/white,0
+ai4,olive green/white,0
+ai5,petrol/white,0
+ai6,white/taupe,0
+ai7,black/bright orange,0
+ai8,olive/light olive,0
+ai9,washed organic khaki,0
+aia,mustard yellow,0
+aib,pigeon blue,0
+aic,red sprinkle,0
+aid,winter night,0
+aie,white/grey/orange,0
+aif,prim rose,0
+aig,electric orange,0
+aih,electric yellow,0
+aii,oceanic,0
+aij,alert red,0
+aik,navy/stone blue,0
+ail,alert red/ebony,0
+aim,grey fog/ebony,0
+ain,ebony,0
+aio,black/ebony,0
+aip,navy/dark orange,0
+aiq,navy/ebony,0
+air,ebony/black,0
+ais,dark lime,0
+ait,true red,0
+aiu,sandstone,0
+aiv,rock,0
+aiw,golden pecan,0
+aix,putty,0
+aiy,oxford/black,0
+aiz,black ink,0
+aj0,black ink heather,0
+aj1,frost grey heather,0
+aj2,cloud heather,0
+aj3,military green heather,0
+aj4,sweet cream heather,0
+aj5,oxford/navy,0
+aj6,oxford/royal,0
+aj7,oxford/true red,0
+aj8,oatmeal heather/black ink,0
+aj9,oatmeal heather/fiery red heather,0
+aja,oatmeal heather/forest green heather,0
+ajb,oatmeal heather/indigo heather,0
+ajc,oatmeal heather/mustard heather,0
+ajd,CCOH,0
+aje,black/nature,0
+ajf,navy/nature,0
+ajg,graphite/nature,0
+ajh,olive/nature,0
+aji,light melange/nature,0
+ajj,black/olive melange,0
+ajk,black/red melange,0
+ajl,navy/royal melange,0
+ajm,CCIT,0
+ajn,off black,0
+ajo,off black,0
+ajp,natural white,0
+ajq,washed oatmeal,0
+ajr,hyper pink,0
+ajs,primrose yellow,0
+ajt,toffee brown,0
+aju,classic red/true pink,0
+ajv,emerald/soft white,0
+ajw,cloudy haze,0
+ajx,espresso haze,0
+ajy,midnight haze,0
+ajz,strawberry haze,0
+ak0,airforce blue/black,0
+ak1,ash/white,0
+ak2,oatmeal/white,0
+ak3,oxford navy/white,0
+ak4,black/soft white,0
+ak5,natural stone/dusty blue,0
+ak6,true pink/classic red,0
+ak7,vanilla/biscuit,0
+ak8,black/kelly green/white,0
+ak9,french navy/orange/white,0
+aka,sapphire blue/french navy/white,0
+akb,black opal/green,0
+akc,blue stripes,0
+akd,french navy/sapphire blue/white,0
+ake,cement,0
+akf,ink,0
+akg,moss,0
+akh,sunshine,0
+aki,camo/brown,0
+akj,camo tree/edge,0
+akk,mustang/beige,0
+akl,blue/beige,0
+akm,classic green,0
+akn,mars red,0
+ako,beige/green,0
+akp,mossgreen/white/olive,0
+akq,moss green/white/olive,0
+akr,gold/white/beige,0
+aks,gold/white/dark navy,0
+akt,navy/white/dark navy,0
+aku,olive/white/loden,0
+akv,slate blue/light grey,0
+akw,stone/shadow grey,0
+akx,black/dark olive,0
+aky,chocolate/dark amber,0
+akz,sunflower/heritage blue,0
+al0,vintage blue/stone,0
+al1,vintage brown/stone,0
+al2,vintage denim/stone,0
+al3,vintage olive/stone,0
+al4,redwood,0
+al5,mushroom,0
+al6,black onyx,0
+al7,ruby red,0
+al8,blueberry swirl,0
+al9,cookies and cream,0
+ala,mango sorbet,0
+alb,mint choc chip,0
+alc,raspberry ripple,0
+ald,natural/blue grey,0
+ale,natural/caramel,0
+alf,natural/dusty green,0
+alg,natural/peach,0
+alh,vintage aqua,0
+ali,dark marine/natural,0
+alj,oxblood/natural,0
+alk,pumpkin/natural,0
+all,rose/natural,0
+alm,sage green/natural,0
+aln,soft white/bottle green,0
+alo,soft white/caramel,0
+alp,cookies and cream,0
+alq,moos green,0
+alr,moos green/white/olive,0
+als,ocean teal,0
+alt,truffle,0
+alu,dark plum,0
+alv,pacific pearl,0
+alw,waterfall,0
+alx,bone,0
+aly,shitake,0
+alz,fluorescent yellow/fluorescent orange/black,0
+am0,dark grey/royal,0
+am1,light grey/dark grey/black,0
+am2,dark grey/burgundy,0
+am3,white/yellow,0
+am4,maroon/white,0
+am5,vintage black/stone,0
+am6,washed coral pink,0
+am7,washed kombu green,0
+am8,washed nude peach,0
+am9,washed santal brown,0
+ama,washed water green,0
+amb,tomato red,0
+amc,dusty khaki,0
+amd,back to nature,0
+ame,white/steel grey,0
+amf,navy/steel grey,0
+amg,burgundy/steel grey,0
+amh,light blue/steel grey,0
+ami,steel grey/new light grey,0
+amj,new light grey/steel grey,0
+amk,fire red/steel grey,0
+aml,forest/steel grey,0
+amm,charcoal/steel grey,0
+amn,smoky green,0
+amo,black/sandstone,0
+amp,carmine red/sandstone,0
+amq,royal/sandstone,0
+amr,smoky green/sandstone,0
+ams,milky blue,0
+amt,dusty blue/sandstone,0
+amu,muddy brown/sandstone,0
+amv,fluorescent orange melange/black,0
+amw,fluorescent yellow melange/black,0
+amx,navy melange/black,0
+amy,sporty khaki,0
+amz,white/fluorescent orange,0
+an0,white/fluorescent yellow,0
+an1,washed dream blue,0
+an2,washed lichen green,0
+an3,washed lit peach,0
+an4,washed lit purple,0
+an5,washed misty green,0
+an6,washed parma pink,0
+an7,washed pearl blue,0
+an8,washed sierra,0
+an9,washed tawny orange,0
+ana,hi vis yellow/football,0
+anb,folk pink,0
+anc,folk red,0
+and,denim/linen,0
+ane,folk pink/off white,0
+anf,off white/aqua/linen,0
+ang,off white/denim/french navy,0
+anh,off white/french navy/bright rone,0
+ani,forest green/green,0
+anj,pearl skin,0
+ank,detox green,0
+anl,raw sugar,0
+anm,grey/dark grey/black,0
+ann,plum purple,0
+ano,grass green,0
+anp,intense blue,0
+anq,pale olive,0
+anr,blue midnight dip,0
+ans,blue midnight melange,0
+ant,scarlet red melange,0
+anu,navy blazer,0
+anv,asphalt grey,0
+anw,beetle green,0
+anx,alpine green,0
+any,skipper blue,0
+anz,surf the web blue,0
+ao0,skyway blue,0
+ao1,egret offwhite,0
+ao2,warm taupe sand,0
+ao3,falcon brown,0
+ao4,cappuccino brown,0
+ao5,lipstick red,0
+ao6,white/charcoal,0
+ao7,port royale,0
+ao8,vibrant orange,0
+ao9,spectra yellow,0
+aoa,fuchsia rose,0
+aob,new light grey/charcoal,0
+aoc,steel grey/charcoal,0
+aod,royal/charcoal,0
+aoe,navy/charcoal,0
+aof,forest/charcoal,0
+aog,fire red/charcoal,0
+aoh,black opal heather,0
+aoi,scarlet red heather,0
+aoj,blue midnight heather,0
+aok,melange blue,0
+aol,off white/french navy/bright red,0
+aom,frozen blue,0
+aon,bubble pink,0
+aoo,beige melange,0
+aop,fondant pink,0
+aoq,white/rainbow,0
+aor,white/black/blue,0
+aos,white/black/orange,0
+aot,white/black/red,0
+aou,peach/white,0
+aov,white/peach,0
+aow,drizzle grey,0
+aox,white melange,0
+aoy,vintage peach,0
+aoz,vintage true pink,0
+ap0,natural/dark olive,0
+ap1,natural/vintage bottle green,0
+ap2,natural/vintage brown,0
+ap3,natural/vintage denim,0
+ap4,natural/vintage light blue,0
+ap5,natural/vintage red,0
+ap6,driftwood,0
+ap7,dusty turquoise,0
+ap8,brown check,0
+ap9,green check,0
+apa,grey check,0
+apb,pink check,0
+apc,alpine lodge,0
+apd,alpine racer,0
+ape,bluebell,0
+apf,snow blossom,0
+apg,white out,0
+aph,biscuit/almond,0
+api,almond/pistachio/dusty green,0
+apj,black/light grey/soft white,0
+apk,oatmeal/natural stone/biscuit,0
+apl,rose/peach/vanilla,0
+apm,dusty green dip dye,0
+apn,natural stone dip dye,0
+apo,navy dip dye,0
+app,pink dip dye,0
+az9,praline rose,0
+b02,azalea,454
+b09,blue dusk,677
+b32,carolina blue,632
+b34,cedar,421
+b40,cherry red,411
+b41,chestnut,146
+b46,cobalt,568
+b56,daisy,315
+b63,dark grey heather,75
+b64,dark heather,42
+b66,dark olive,175
+b76,eggplant,498
+b78,electric blue,580
+c08,heather navy,539
+c15,heliconia,444
+c18,hot pink,435
+c21,ice grey,108
+c23,iris,605
+c26,jade dome,231
+c43,medium grey,64
+c44,metro blue,561
+c45,mid blue,618
+c47,military green,188
+c60,offwhite,7
+c61,old gold,133
+c67,orchid,474
+c75,paprika,409
+c80,pebble brown,141
+c81,pepper red,407
+c88,pigment denim,0
+c89,pigment light army,0
+c94,pop orange,372
+c97,prairie dust,143
+d14,rope,129
+d17,safety green,277
+d18,safety orange,360
+d21,sapphire,592
+d44,tangerine,349
+d50,team purple,506
+d60,vintage blue,569
+d61,vintage green,232
+d62,vintage red,418
+d64,wasabi,265
+d65,washed blue,600
+d67,washed red,383
+d72,neon lime/grey,1123
+d73,sky/french navy,1452
+d74,apple green/french,1126
+d75,lemon/french navy,1149
+d76,french navy/white,1338
+d77,melange grey/pink,922
+d78,red/french navy,1243
+d79,medium blue,638
+d80,light grey/light pink,972
+d81,black/mint,814
+d82,black/lime green,812
+d84,girl pink,446
+d85,aqua/black,1486
+d86,black/neon green,818
+d87,black/neon yellow,821
+d88,black/neon pink,820
+d89,black/neon orange,819
+d90,white/berry,685
+d91,pink/black,1274
+d95,green/beige,1090
+d96,purple/black,1291
+d97,turquoise/black,1483
+e01,silver/black,966
+e02,grey heather/purple,943
+e03,dusty olive,179
+e04,dark green/cream,1055
+e05,brown/cream,1005
+e06,bordeaux/cream,1299
+e07,aubergine/silver,1308
+e08,mint/white,1127
+e09,navy/aqua,1355
+e10,dark blue,550
+e11,grey blue,617
+e12,magenta,433
+e13,rosewood,438
+e14,olive green,198
+e17,olive/cream,1036
+e18,white/olive,734
+e19,khaki/olive,1026
+e20,red/silver,1246
+e21,black/cream,786
+e22,yellow/frog,1145
+e30,white/lilac,722
+e31,white/neon green,728
+e32,white/neon orange,729
+e33,white/neon pink,730
+e34,white/neon yellow,731
+e36,green olive/burnt orange,1047
+e37,dark choccolate/black,1018
+e38,forest green/black,1049
+e39,frog/black,1107
+e43,black/turquoise,843
+e46,army/beige,1040
+e47,black/grey melange,803
+e51,white/kelly green,717
+e52,white/lemon,718
+e53,chocolate/beige,1016
+e55,white/atoll,681
+e56,shiny red,401
+e58,beige/white,981
+e59,pale pink/white,0
+e65,pigment charcoal grey,0
+e66,pigment mole,0
+e67,black/apple green,767
+e69,off white/black,1141
+e76,dark denim,555
+e77,light denim,612
+e81,black/silver/white,837
+e82,purple/lime green/white,1288
+e83,aqua/lime green/white,1435
+e84,carbon/orange/white,917
+e85,red/off white,1249
+e86,navy/off white,1365
+e87,light grey/off white,973
+e88,off white/lime green,758
+e89,turquoise/off white,1480
+e90,tropical green,255
+f36,europe,0
+f62,cobalt,611
+f72,fluorescent yellow/black,1157
+f87,dark royal,563
+f89,pepita/black,998
+f90,grey/green,951
+f95,black/black/red,776
+f96,black/black/white,777
+f97,black/acid yellow,765
+f98,green/carbon,1093
+f99,turquoise/carbon,1482
+g01,fluorescent green/black,1114
+g02,fluorescent orange/black,1200
+g11,oleander/green,1031
+g14,grape/lime green,1300
+g15,aqua/lime green,1434
+g16,green/grape,1096
+g17,grey melange/black/white,938
+g18,red/navy/white,1217
+g19,royal/navy/white,1386
+g20,irish green/black/white,1086
+g21,white/blue,692
+g24,grey melange/white,941
+g25,carbon/aqua,913
+g26,lime green/carbon,1116
+g27,off white/silver,760
+g29,black/leopard,0
+g30,black/zebra,0
+g35,black smoke,18
+g38,blue chip,589
+g39,silver moon,613
+g40,coffee bean,170
+g41,luxurious red,424
+g42,business blue,645
+g43,dark blue smoke,565
+g44,purple smoke,503
+g45,flame red,371
+g46,grey steel,49
+g48,grey/grey,961
+g51,violet/white,1283
+g61,grey/navy,920
+g71,neon lime,259
+g72,burnt lime,250
+g73,bright turquoise,663
+g76,light royal blue/black,1419
+g80,vintage white,12
+g81,vintage navy,524
+g82,vintage charcoal,44
+g84,white/red/white,743
+g85,grey/aqua,957
+g86,grey/lime,868
+g87,aqua/grey,660
+g88,lime/grey,1122
+g89,blue triblend,609
+g90,green triblend,237
+g91,grey triblend,88
+g92,charcoal black triblend,33
+g93,purple triblend,491
+g94,navy triblend,533
+g95,dark red triblend,412
+g96,solid black triblend,28
+g97,solid white triblend,8
+g98,amethyst triblend,499
+g99,emerald triblend,676
+h05,acid yellow/carbon,1165
+h06,khaki/dark green,1028
+h07,olive/red,1033
+h08,dark grey/navy,932
+h09,anthracite/white,910
+h17,rusty pink,393
+h22,taupe,142
+h23,aqua/lime green/white,1436
+h24,purple/lime green/white,1287
+h25,darkgrey melange/natural,866
+h26,green/natural,1097
+h27,light grey melange/black,924
+h28,navy/natural,1318
+h29,red/natural,1251
+h30,kit,136
+h31,spring green,234
+h32,heather,104
+h34,brilliant blue,588
+h35,brilliant blue/black,1415
+h37,sky diver,578
+h38,navy/putty,1331
+h39,putty/bottle,991
+h40,sky/navy,1449
+h41,grey/yellow,921
+h42,forest/red,1064
+h43,hi viz orange,374
+h44,hi viz yellow,320
+h45,black/tan,841
+h46,tan/navy,1009
+h47,black/sky,838
+h48,stone/olive,1461
+h49,amber/heather,1273
+h50,forest/putty,1063
+h51,heather/amber,997
+h52,laser blue/white,1445
+h53,putty/navy,990
+h54,red/putty,1218
+h62,desert khaki,174
+h63,olive mash,196
+h67,chocolate brown,167
+h68,powder blue,633
+h78,lemon yellow,312
+h79,brown/natural,1004
+h92,arctic green/white,1050
+h93,rococco red,417
+h94,marine navy,543
+h95,navy/gold,1327
+h96,purple/yellow,1304
+h97,black/gold,793
+h98,pale green,283
+h99,white/pale green,737
+i01,baby blue/white,1454
+i02,chocolate/pink,1015
+i03,navy/baby blue,1372
+i04,pale green/pale yellow,724
+i05,pale green/white,1133
+i06,pale yellow/white,1134
+i13,red triblend,399
+i16,flannel grey,51
+i18,khaki/light graphite,1024
+i19,orange/light graphite,1207
+i20,sunflower/kelly green,1172
+i21,steel blue/deep navy,1418
+i22,white/deep navy,701
+i25,smoke,54
+i28,underwear navy/underwear navy,1341
+i29,light grey marl/light grey mar,978
+i30,antique cherry red,419
+i31,antique helicona,429
+i32,heather orange,344
+i33,heather purple,494
+i34,antique sapphire,574
+i35,russet,169
+i36,sunset,362
+i37,tweed,154
+i38,antique jade dome,230
+i39,antique orange,375
+i40,blackberry,514
+i41,antique irish green,226
+i42,straw yellow,287
+i43,tropical blue,607
+i44,semi transparent,0
+i46,beige/grey,994
+i55,dark royal blue,551
+i57,light burnt orange,356
+i58,taupe/orange,1014
+i59,petrol blue/slate grey,1489
+i60,slate grey/petrol blue,886
+i61,black/burnt lime,780
+i62,heather royal,615
+i63,charcoal/lime/white,878
+i64,acid yellow,319
+i65,dark melange,74
+i66,light melange,98
+i67,blue/silver,1442
+i68,carbon/acid yellow,881
+i69,dark orange/carbon,1213
+i70,yellow/carbon,1146
+i71,black/white/grey,848
+i72,cobalt/white/black,1432
+i73,green/white/black,1102
+i74,white/black/grey,688
+i75,yellow/white/black,1142
+i76,carbon/red,918
+i77,aqua/acid yellow,1433
+i78,royal/carbon,1388
+i79,azure/navy,1411
+i80,carbon/turquoise,919
+i81,green/acid yellow,1074
+i82,navy/blue,1358
+i83,navy/cobalt,1350
+i84,off white/carbon,756
+i85,dark melange/black,923
+i86,light melange/carbon,955
+i87,black/black/yellow,779
+i88,black/cobalt/white,785
+i89,black/green/white,799
+i90,cobalt/navy,1430
+i91,green/dark green,1094
+i92,dark orange/white,1209
+i93,white/black white,690
+i94,white/red white,742
+i95,white/royal white,746
+i96,black/black white,778
+i97,light blue/navy white,1472
+i98,white/carbon,696
+j07,light berry,445
+j08,off white/navy,759
+j09,black/off white,822
+j10,cobalt/off white,1431
+j11,dark orange/off white,1210
+j12,green/off white,1099
+j13,grey melange/off white,940
+j14,anthracite/natural,909
+j15,cobalt/grey heather,1429
+j16,dark orange/navy,1211
+j17,grey melange/navy,939
+j18,off white/grey heather,757
+j19,dark orange/dark orange/white,1212
+j20,lime green/lime green/white,1131
+j21,navy/navy/white,1352
+j22,red/red/white,1248
+j23,royal/royal/white,1396
+j24,turquoise/turquoise/white,1478
+j25,white/navy/white,727
+j26,black/white/lime green,850
+j27,black/white/orange,851
+j28,black/white/turquoise,856
+j29,black/white/yellow,857
+j30,warm yellow,306
+j31,black/gold yellow/light grey,22
+j32,brown/turquoise,3
+j33,fuchsia/lime green,544
+j34,light grey/yellow,976
+j35,red/dark grey,675
+j37,dark grey/green,931
+j38,light grey/dark grey,971
+j39,dark grey/yellow,934
+j40,frozen green,256
+j41,berry/cream,1271
+j46,transparent,9
+j48,slate grey/orange,885
+j49,burnt lime/light grey,1105
+j50,purple/light grey,1301
+j51,red/slate grey,1236
+j52,bottle green/beige,1048
+j53,army green,183
+j54,stereo red,414
+j55,faded white,4
+j56,faded black,23
+j57,brazilian yellow,305
+j58,crimson red,396
+j59,deep indigo,554
+j62,leaf green,223
+j63,midnight blue,545
+j64,bright blue,596
+j65,black stripe/white/grey,763
+j66,navy/navy/blue,1339
+j67,skydiver,581
+j68,rock grey,45
+j69,azure/yellow,1425
+j70,berry/maroon,1266
+j71,black/pacific,827
+j72,fern green/yellow,1083
+j73,graphite/fern green,899
+j74,orange/rust,1189
+j75,tomato/silver,1264
+j76,yellow/azure,1139
+j77,anthracite melange/black,887
+j78,sports grey/navy,964
+j79,neon green/neon pink/black,1106
+j80,neon orange/neon green/black,1194
+j81,pacific/neon orange/white,1423
+j82,yellow/pacific/white,1136
+j83,stone grey,897
+j84,graphite/dark orange,898
+j85,graphite/green,901
+j86,graphite/oleander,903
+j87,graphite/red,904
+j88,graphite/yellow,906
+j89,orion blue,855
+j90,navy/white/tomato,1354
+j91,silver/maroon/tomato,959
+j92,white/azure/tomato,682
+j93,white/tomato/navy,752
+j94,black/pink,828
+j95,carbon/yellow,911
+j96,lime green/dark purple,1111
+j97,green tea/white,1025
+j98,orange/graphite,1190
+j99,purple/graphite,1284
+k01,turquoise/navy,1485
+k02,dark green/red,1067
+k03,grey marl,62
+k04,red marl,379
+k05,blue marl,643
+k06,pacific green,247
+k07,pacific grey,106
+k08,pacific pink,466
+k12,blue clash,587
+k13,jazzberry clash,388
+k14,green clash,218
+k15,rusty clash,147
+k16,grey clash,598
+k17,raw blue,570
+k18,denim/heather grey,1500
+k19,denim/navy,1500
+k20,denim/burgundy,1500
+k21,deep blue denim,547
+k22,dark heather blue,548
+k23,dark heather moss,212
+k24,dark heather red,426
+k25,chic denim,566
+k26,chic olive,192
+k27,chic red,406
+k28,shades of grey,1500
+k30,deep berry,512
+k31,kiwi green,261
+k32,sweet pink,447
+k35,red marble,384
+k36,charcoal marble,40
+k37,white marble,1
+k38,blue marble,285
+k40,green flash,269
+k41,deep lilac,492
+k42,hawaii blue,602
+k43,daisy yellow,297
+k44,king blue,576
+k45,marina blue,531
+k46,cupcake pink,430
+k47,cyber orange,342
+k48,cyber yellow,321
+k50,grey marl/black,55
+k51,lime green/grey,1112
+k52,bright orange/black,1500
+k53,frost grey,67
+k54,fluorescent pink,449
+k55,light royal blue/white,1420
+k56,titanium/black,873
+k57,white/titanium,751
+k58,blue jean,514
+k59,vintage grey,83
+k60,black/fine grey,791
+k61,light kelly green/white,1085
+k62,light royal blue/yellow,1421
+k63,navy/fine grey,1315
+k64,oxford grey/navy,954
+k65,tropical blue/white,1422
+k66,white/fine grey,703
+k67,transparent white,10
+k68,grass green/white,1071
+k69,royal blue/red,1412
+k74,safety pink,453
+k75,rs sport grey,84
+k80,fern green,235
+k81,sun yellow,324
+k82,tomato/white,1226
+k83,sun yellow/white,1168
+k84,fern green/graphite,1080
+k85,graphite/white,905
+k86,fern green/carbon,1079
+k88,black/berry/maroon,773
+k89,bordeaux/white,1302
+k91,glacier blue/white,1444
+k92,glacier blue,635
+k93,magenta/graphite,1269
+k94,fern green/white,1082
+k95,graphite/light grey,902
+k96,light grey/white/black,965
+k97,aqua/navy/white,1439
+k98,sun yellow/white/light grey,1167
+k99,orange/dark green/white,1191
+l01,white/sun yellow,750
+l02,white/fern green,702
+l03,white/graphite,707
+l04,white/magenta,725
+l05,atlantic,593
+l06,grenadine,386
+l07,iron grey,76
+l09,yellow/green/royal,1138
+l10,white/black/gold yellow,687
+l11,azure/white/green,1424
+l12,lime green/beige,1110
+l13,dark orange/beige,1187
+l14,red/beige,1240
+l15,turquoise/beige,1488
+l16,purple/purple/white,1285
+l17,glacier blue/glacier blue/white,1443
+l18,graphite/graphite/white,900
+l19,blue melange,622
+l20,green melange,246
+l21,orange melange,357
+l22,red melange,387
+l23,yellow melange,326
+l24,black melange/dark grey,762
+l25,blue melange/dark grey,1440
+l26,green melange/dark grey,1103
+l27,orange melange/dark grey,1201
+l28,red melange/dark grey,1225
+l29,yellow melange/dark grey,1173
+l30,black/fern green,790
+l31,black/tomato,842
+l32,royal/tomato,1414
+l33,nautic blue/white,1343
+l34,irish green/navy/white,1075
+l35,nautic blue/navy/white,1342
+l36,sun yellow/navy/white,1169
+l37,white/white/navy,755
+l38,atlantic/black,1417
+l39,green/iron grey,1076
+l40,grenadine/iron grey,1292
+l41,iron grey/lemon,927
+l42,lemon/iron grey,1174
+l43,tomato/black,1228
+l44,black/atlantic,770
+l45,iron grey/green,925
+l46,iron grey/grenadine,926
+l47,fern green/navy,1081
+l48,graphite/azure,896
+l49,navy/fern green,1351
+l50,tomato/navy,1227
+l51,orient red,408
+l52,acid yellow/black,1156
+l53,blue/white/red,1428
+l54,sun yellow/green/blue,1170
+l55,white/black/yellow,691
+l56,black/yellow/black,860
+l57,forest green/white,210
+l58,black/carbon/white,782
+l59,dark green/black/white,1066
+l60,white/carbon/black,697
+l61,charcoal grey melange/black,864
+l62,french navy/red,1337
+l63,white striped/black,1500
+l64,opal grey/black,963
+l65,white/bright sky,694
+l66,bright sky/navy,1460
+l67,titanium grey/black,882
+l68,bud green,178
+l69,heritage blue,625
+l70,black/sun yellow,840
+l71,soft blue,644
+l72,blue melange/black,667
+l73,denim melange/black,1384
+l74,green melange/black,1084
+l75,red melange/black,376
+l76,ink/black,1400
+l77,jungle green/black,191
+l78,racing green,252
+l79,black/dark grey melange,788
+l80,navy/light grey melange,1385
+l81,pacific,619
+l82,carbon melange/acid yellow,888
+l83,carbon melange/silver,889
+l84,maroon melange/berry,504
+l85,navy melange/azure,535
+l86,carbon/off white,77
+l87,natural/off white,118
+l88,pink/off white,436
+l89,natural/elk,124
+l90,natural/heart,125
+l91,coral marl,343
+l92,green marl,279
+l93,pink marl,452
+l94,purple marl,493
+l95,silver marl,89
+l96,yellow marl,290
+l97,pixel lime,323
+l98,pixel coral,369
+l99,pixel pink,437
+m01,pixel turquoise,275
+m02,chili gold,331
+m03,bright lime,249
+m04,bright fuchsia,442
+m05,sun orange,350
+m06,rich violet,484
+m07,strawberry red,395
+m08,steel,627
+m09,black denim,529
+m10,blue denim,541
+m11,cornflower,623
+m12,cyan,668
+m13,grey denim,43
+m14,indigo denim,553
+m15,marine blue,532
+m16,oasis green,220
+m17,sage,616
+m18,terracotta,363
+m19,ultra purple,509
+m20,royal/green/white,1389
+m21,blue/yellow/white,590
+m22,dark orange/blue/white,353
+m23,white/blue/yellow,693
+m24,red white striped/navy,1500
+m25,navy white striped/red,1500
+m26,blue white striped/navy,1500
+m27,green white striped/blue,1500
+m28,light-blue white striped/navy,1500
+m29,graphite white striped/purple,1500
+m30,purple white striped/graphite,1500
+m31,navy/red white striped,1500
+m32,blue/navy white striped,1500
+m33,green/blue white striped,1500
+m34,graphite/red white striped,1500
+m35,light blue/navy white striped,1500
+m36,purple/graphite white striped,1500
+m37,red/navy white striped,1500
+m38,bleu/off white,637
+m39,navy/red-navy-white,1500
+m41,dark orange/blue-orange-white,1500
+m42,white/blue-yellow-white,1500
+m43,royal/blue-green-white,1500
+m44,wine melange,501
+m45,turquoise melange,666
+m46,horizon blue,629
+m47,grey melange/dark denim,105
+m48,black melange/dark denim,85
+m49,light denim melange/dark denim,567
+m50,dark denim melange/light denim,214
+m51,lava,16
+m52,simply green,257
+m53,dark navy/black melange,1311
+m54,grey melange/black melange,92
+m55,dark denim melange,522
+m56,light denim melange,572
+m57,carmine red melange,496
+m58,dusty green melange,673
+m59,off white/aqua,5
+m60,red/steel grey,440
+m61,steel grey/acid yellow,107
+m62,jungle green/acid yellow,1078
+m63,iron grey/yellow,907
+m64,dark orange/iron grey,354
+m65,spring green/iron grey,264
+m66,pacific/white,657
+m67,grenadine/white,387
+m68,white/pacific,736
+m69,white/grenadine,709
+m70,sand/brown,126
+m71,denim/denim,571
+m72,wine melange/dark grey,1303
+m73,grey heather/dark grey,103
+m74,turquoise melange/dark grey,1487
+m75,turqoise melange,665
+m76,light-yellow,286
+m78,dark denim striped,1500
+m79,grey melange striped,1500
+m80,azure/yellow/orange,648
+m81,navy/tomato/fern green,1353
+m82,lime green/pink/turquoise,1118
+m85,anthra heather,35
+m86,purple melange,481
+m87,bahama green,236
+m88,true blue,558
+m89,salmon pink,389
+m90,earth green,180
+m91,frosted blue,636
+m92,indian yellow,333
+m93,pacific blue,536
+m94,winter white,299
+m95,lavender purple,483
+m96,aqua heather,282
+m97,charcoal heather,36
+m98,cherry heather,411
+m99,navy heather,515
+n01,pumpkin heather,358
+n02,purple heather,481
+n03,washed white,11
+n04,washed navy,526
+n05,linen,308
+n06,anis,300
+n07,natural/chocolate,298
+n08,navy/oxford grey,518
+n09,fine grey/tropical blue,82
+n10,duck blue,564
+n11,deep black,21
+n16,amber,332
+n20,green absinthe,268
+n21,camo,1500
+n22,black/aqua,768
+n23,black/neon lime,817
+n24,camo/royal,1500
+n25,camo/yellow,1500
+n26,charcoal grey/orange,38
+n27,french navy/orange,1336
+n28,heather blue,614
+n29,heather burgundy,505
+n30,melange grey/orange,72
+n31,neon lime/royal blue,260
+n32,royal/neon yellow,1410
+n33,digital black,200
+n34,digital blue,594
+n35,digital grey,79
+n36,neon blue,621
+n43,french navy/french navy,1500
+n44,vivid green,242
+n45,pure grey,57
+n54,fuchsia/slate grey,457
+n55,navy/slate grey,519
+n56,royal blue/dark grey,1406
+n57,orange/dark grey,1192
+n58,yellow/dark grey,1166
+n59,dark titanium,78
+n60,dark grey/beige,879
+n61,pacific/dark orange/grey,1500
+n62,olive striped,185
+n70,caramel,140
+n71,cornflower blue,599
+n72,cranberry,497
+n73,graphite grey,61
+n74,sapphire blue,601
+n75,surf blue,661
+n76,royal blue/gold,1407
+n77,gold/red,1178
+n78,kelly green/gold,233
+n90,grafitti,1500
+n91,star,1500
+n93,flower green,1500
+n94,vegas,1500
+n95,savana,1500
+n96,flower fuchsia,1500
+n97,zebra,1500
+n98,royal blue/slate grey,1413
+n99,aspen green/grey,1500
+o01,royal melange,546
+o02,burgundy melange,489
+o03,black/fluorescent green,1500
+o04,caramel/navy,1500
+o05,nougat/off white,1500
+o06,straw/brown,1500
+o07,caramel/turquoise,1500
+o08,nougat/grenadine,1500
+o09,straw/olive,1500
+o10,caramel/black,1500
+o11,nougat/lime green,1500
+o12,beige melange/brown,1500
+o13,pine green,285
+o14,indian red,365
+o15,coal black,30
+o16,grenadine/black,1500
+o17,navy/camel,1500
+o18,black/camel,1500
+o19,royal/off white,1500
+o20,light red/off white,1500
+o21,spring green/off white,1500
+o22,royal melange/red,1500
+o23,kiwi melange/royal,1500
+o24,light grey melange/red,1500
+o25,pink melange/off white,1500
+o26,dark grey melange/silver,1500
+o27,ivory/natural,1500
+o28,rose/dark grey,1500
+o29,dark grey/silver,1500
+o30,plum/glacier grey,1500
+o31,pine green/glacier grey,1500
+o32,coal black/glacier grey,1500
+o33,anthracite/black,1500
+o34,dark red/anthracite,1500
+o35,dark olive/anthracite,1500
+o36,grey/navy melange,1500
+o37,black/carbon melange,1500
+o38,back/carbon melange,0
+o39,dark red/black melange,1500
+o40,dark green/black melange,1500
+o41,coal black/grey,1500
+o42,glacier grey/carbon,1500
+o43,light red,383
+o44,space grey,45
+o45,arctic blue,120
+o46,virtual pink,397
+o47,grey/orange,1500
+o48,denim melange,568
+o49,flint stone,1500
+o50,dusty green,246
+o51,navy/turquoise,1500
+o52,coral/dark grey,1500
+o53,navy melange,515
+o54,vivid green/black,1500
+o55,purple/grey,1500
+o56,orange rust,348
+o57,natural/black,1500
+o58,natural/fuchsia,1500
+o59,natural/lime green,1500
+o60,natural/surf blue,1500
+o61,lagoon,116
+o62,black/convoy grey,1500
+o63,black/fuchsia,1500
+o64,black/kelly green,1500
+o65,black/light royal blue,1500
+o66,wine/white,1500
+o67,titanium/black/black,1500
+o68,white/navy/red,1500
+o69,ash/lemon,1500
+o70,heather jeans,514
+o71,ultramarine,516
+o72,sunset pink,395
+o73,neon coral,368
+o74,jade green,227
+o75,vintage brown,149
+o76,vintage rose,448
+o77,horizon,629
+o78,anthra melange,35
+o79,olive melange,185
+o80,pumpkin melange,358
+o81,pink melange,379
+o82,marina heather,1500
+o83,royal heather,546
+o84,light red/navy,1500
+o85,olive/silver,1500
+o86,indian red/silver,1500
+o87,cobalt/silver,1500
+o88,pink/silver,1500
+o89,silver/silver,1500
+o90,light red/silver,1500
+o91,spring green/silver,1500
+o92,caribbean green/white,1500
+o93,wine melange/wine,1500
+o94,blue melange/navy,1500
+o95,grey heather/navy,1500
+o96,black melange/black,1500
+o97,green melange/dark green,1500
+o98,orange melange/dark orange,1500
+o99,turquoise melange/turquoise,1500
+p00,blue water,290
+p01,pink/fuchsia,1500
+p03,spring green/green,1500
+p04,black denim/black,1500
+p05,dark denim/dark green,1500
+p06,navy/atlantic/green,1500
+p07,red/nautic blue/navy,1500
+p08,magenta/turquoise/green,1500
+p09,anthracite/silver/acid yellow,1500
+p10,wine/off white,1500
+p11,brown/off white,1500
+p12,dark green/off white,1500
+p13,white/acid yellow,1500
+p14,white/sports grey,1500
+p15,black melange/light grey,1500
+p16,olive/brown,1500
+p17,taupe/graphite,1500
+p18,denim/red,1500
+p19,denim/turquoise,1500
+p20,graphite/magenta,1500
+p21,light grey/graphite,1500
+p22,olive/acid yellow,1500
+p23,camouflage/black,1500
+p24,checked camouflage/black,1500
+p25,city red,1500
+p26,flower/black,1500
+p27,black/camouflage,1500
+p28,black/checked camouflage,1500
+p29,magenta/flower,1500
+p30,red/city,1500
+p31,black/mesh camouflage,1500
+p32,green/green,1500
+p33,magenta/magenta,1500
+p34,royal/royal,1500
+p35,light grey/navy,1500
+p36,macaroon,0
+p37,black/light denim,1500
+p38,navy/light denim,1500
+p41,black melange/atlantic,1500
+p42,black melange/tomato,1500
+p43,black melange/white,1500
+p44,grey melange/green,1500
+p45,grey melange/lemon,1500
+p46,grey melange/grenadine,1500
+p47,light red/chili,1500
+p48,white/dark denim,1500
+p49,red/dark denim,44
+p50,green white,0
+p51,grey white,0
+p52,khaki multicolor,0
+p53,multicolour,0
+p54,new york,1500
+p55,skull,1500
+p56,olive/white,1500
+p57,orange/orange,1500
+p58,black grey/black,1500
+p59,fuchsia/grey,1500
+p60,turquoise/green,1500
+p62,yellow fluo,288
+p63,grey/fuchsia,1500
+p64,blue green,1500
+p65,grey acid wash,45
+p66,red acid wash,386
+p67,true royal acid wash,546
+p69,athletic heather/navy,1500
+p70,black/deep heather,1500
+p71,dark grey heather/black,1500
+p72,heather red/deep heather,1500
+p73,heather true royal/navy,1500
+p74,white/athletic heather,1500
+p76,white flake/charcoal black triblend,1500
+p77,grey/navy triblend,1500
+p78,true royal triblend,546
+p79,light turquoise/white/navy,1500
+p80,navy/white/light turquoise,1500
+p81,fennel/pink,1500
+p82,lime/royal,1500
+p83,navy/lime,1500
+p84,raspberry/lime,1500
+p85,royal/lime,1500
+p86,white/heather grey,1500
+p87,marl grey,45
+p88,ocean blue/lime,1500
+p89,hunters green,195
+p90,real grey,36
+p91,gold/kelly green,1500
+p92,grey melange/burgundy,1500
+p93,grey melange/royal blue,1500
+p94,china blue,0
+p95,grey melange/red,0
+p96,white/red/royal,1500
+p97,greenish grey,1500
+p98,greyish navy,1500
+p99,euroblue,550
+q00,anthracite/yellow,1500
+q01,anthracite/grey,1500
+q02,anthracite/lime,1500
+q03,anthracite/red,150
+q04,black/euroblue,1500
+q05,black/navy,1500
+q06,chocolate chip/greyish brown,80
+q07,black matt,14
+q08,dark navy/navy,150
+q09,dark cobalt/lobl,149
+q10,black sprinkle,14
+q11,black/loden,350
+q12,nature,128
+q13,night grey,35
+q14,warm grey,45
+q15,sea blue,0
+q16,sage green,0
+q17,anthracite/euroblue,0
+q18,anthracite/orange,0
+q20,pale khaki/birch,0
+q21,navy/greyish brown,0
+q22,space grey/black,0
+q23,olive/space grey,0
+q24,raspberry/space grey,0
+q25,deep olive,0
+q26,black heather,0
+q30,soft grey,0
+q31,germany,0
+q32,frei,0
+q33,spicy orange,0
+q34,frei,0
+q35,frei,0
+q38,black/heather grey,0
+q39,heather grey/navy,0
+q40,frei,0
+q41,grey/dark grey,0
+q42,pale midnight navy,0
+q43,navy/light grey,0
+q44,delft,0
+q46,mink beige,0
+q47,chocolate chip,0
+q48,frei,0
+q49,black/white/storm grey,0
+q50,red/white/storm grey,0
+q51,blue heather,0
+q52,orange heather,0
+q53,tropical blue heather,0
+q54,dark red heather,0
+q55,green heather,0
+q56,striped white/oxford blue,0
+q57,oxford silver,0
+q58,aqua blue/dark grey,0
+q59,light beige/dark grey,0
+q60,black/white/blue,0
+q61,navy/white/storm grey,0
+q62,navy/dark grey,0
+q63,convoy grey/black,0
+q64,navy/convoy grey,0
+q65,red heather,0
+q66,striped white/navy,0
+q67,beige/dark grey,0
+q68,light mastic,0
+q69,dark beige,0
+q70,lilas,0
+q71,heather black/heather grey,0
+q72,heather grey/heather black,0
+q73,heather military green/heather grey,0
+q74,heather navy/heather grey,0
+q75,vintage aqua blue,0
+q76,vintage denim,0
+q77,black/grenadine,0
+q78,dark green melange,0
+q79,kiwi/black,0
+q80,navy/carbon,0
+q81,bright blue/carbon,0
+q82,bright pink/carbon,0
+q83,grey melange/carbon,0
+q84,bright orange/carbon,0
+q85,bright yellow/carbon,0
+q86,natural melange,0
+q87,2016-07/DE,9999
+q88,2016-07/e/,9999
+q89,2016-07/PL,9999
+q90,2016-07/CZ,9999
+q91,2016-07/HR,9999
+q92,silver melange,0
+q93,spring green/navy,0
+q94,turquoise/iron grey,0
+q95,nautic blue/navy,0
+q96,nautic blue,0
+q97,titan/black,0
+q98,black/light red,0
+q99,light red/black,0
+r00,bright green/black,0
+r01,white/bright green,0
+r02,navy/bright yellow,0
+r03,bright blue/bright yellow,0
+r04,bright yellow/bright blue,0
+r05,iron grey/red,0
+r06,bright orange,0
+r07,red/red white,0
+r08,navy/red white,0
+r09,white/purple white,0
+r10,lime green/lime green white,0
+r11,royal/royal white,0
+r12,blue/black,0
+r13,denim melange/navy,0
+r14,heather/black melange,0
+r15,heater/dark green,0
+r16,heather/dark grey,0
+r17,heather/navy,0
+r18,hunter green,0
+r19,royal melange/blue,0
+r20,coral melange/white,0
+r21,berry melange/silver,0
+r22,grey melange/anthracite,0
+r23,regatta blue,0
+r24,red/blue white,0
+r25,royal/navy white,0
+r26,white/navy white,0
+r27,black/white titan,0
+r28,navy/white light blue,0
+r29,graphite/white red,0
+r30,white/white red,0
+r31,white/blue white,0
+r32,white/grey white,0
+r33,white/white light blue,0
+r34,mid grey/wine,0
+r35,indian red/black,0
+r36,charcoal/dark royal,0
+r37,chic pure white,0
+r38,chic anthracite,0
+r39,black/azure,0
+r40,black/purple,0
+r41,heather grey/black,0
+r42,emerald green,0
+r43,vivid blue,0
+r44,orange marl,0
+r45,orange marl/grey mist,0
+r46,grey mist/orange marl,0
+r47,phantom grey/lavender,0
+r48,lavender/lime punch,0
+r49,sport grey/hot coral,0
+r50,hot coral/lime punch,0
+r51,ocean blue/phantom grey,0
+r52,phantom grey/ocean blue,0
+r53,grey marl/hot coral,0
+r54,black/lavender,0
+r55,sport grey marl/hot coral,0
+r56,hot coral,0
+r57,sport grey marl,0
+r58,mossy green,0
+r59,french navy heather,0
+r60,ocean blue heather,0
+r61,wine heather,0
+r62,yellow/brown,0
+r63,hibiscus,0
+r64,charcoal melange,0
+r65,oxblood/white,0
+r66,ash/grey melange,0
+r67,oxblood/french navy,0
+r68,french navy/charcoal melange,0
+r69,slate blue/charcoal melange,0
+r70,umber,0
+r71,metal grey,0
+r72,bugatti blue/navy pro,0
+r73,royal/orange,0
+r74,black/phantom grey,0
+r75,navy/jasmine,0
+r76,ruby/navy,0
+r77,camo charcoal/black,0
+r78,light sand,0
+r79,workguard grey,0
+r80,workguard grey/black,0
+r81,petroleum blue,0
+r82,powder grey,0
+r83,natural/bright red,0
+r84,natural/forest green,0
+r85,heather green,0
+r86,heather indigo,0
+r87,marina blue melange,0
+r88,chambray blue,0
+r89,titan/white,0
+r90,white/titan,0
+r91,black/linen,0
+r92,linen/black,0
+r93,navy/sand,0
+r95,black/white titanium,0
+r96,bright pink/titan,0
+r97,red melange/titan,0
+r98,titan/tomato,0
+r99,white/titan white,0
+s04,black/red/yellow,0
+s05,kelly green/light grey/white,0
+s06,light royal blue/red/white,0
+s07,light royal blue/yellow/white,0
+s08,navy/wine/white,0
+s09,oxford grey/navy/white,0
+s10,red/yellow/white,0
+s11,sky blue/navy/white,0
+s12,white/sky blue/light grey,0
+s13,titan/red-navy-white,0
+s14,black/black melange,0
+s15,navy/navy melange,0
+s17,space grey/grey melange,0
+s18,Standard,0
+s19,Promotion,0
+s20,Business,0
+s21,CCAT,0
+s22,anthracite melange/red/red,0
+s23,beige/anthracite melange/red,0
+s24,brown melange/beige/royal,0
+s25,brown melange/purple/purple,0
+s26,red/anthracite melange/green,0
+s27,green/brown,0
+s28,purple/brown,0
+s29,CCDE,0
+s30,CCCZ,0
+s31,BICZ,0
+s32,CCEU,0
+s33,CCCH,0
+s34,CCPL,0
+s35,CCHU,0
+s37,VK PL - 100,0
+s38,VK PL - 50,0
+s40,EK CCAT,0
+s41,EK BICZ,0
+s42,EK CCDE,0
+s43,Individual Cover,0
+s44,Proof,0
+s45,Cover außen,0
+s46,Cover innen & außen,0
+s47,Adresseindruck,0
+s48,brown/stone,0
+s49,dark green/orange,0
+s50,red/anthracite melange,0
+s51,navy/anthracite melange,0
+s52,royal blue/anthracite melange,0
+s53,royal/anthracite melange,0
+s54,black/anthracite melange,0
+s55,silver/anthracite melange,0
+s56,magenta/silver,0
+s57,graphite/silver,0
+s58,fern green/silver,0
+s59,indigo blue/silver,0
+s60,off white/off white,0
+s61,burnt orange/silver,0
+s62,silver melange/graphite,0
+s63,kiwi melange/anthracite melange,0
+s64,pink melange/anthracite melange,0
+s65,grey melange/anthracite melange,0
+s66,royal melange/anthracite melange,0
+s67,light melange/anthracite melange,0
+s68,plum/white,0
+s69,beige/brown melange,0
+s70,brown melange/beige,0
+s71,brown melange/purple,0
+s72,anthracite melange/red,0
+s73,silver melange/black,0
+s74,royal melange/navy,0
+s75,stone melange/black,0
+s76,carbon melange/black,0
+s77,white melange/carbon,0
+s78,dark green melange/black,0
+s79,dark red melange,0
+s80,grey heather/carbon,0
+s81,indian red/white,0
+s82,grey melange/light grey melange,0
+s83,off white/brown,0
+s84,grafische Bearbeitung,0
+s85,heather/black,0
+s86,dark grey/off white,0
+s87,grey heather/white,0
+s88,straw/navy,0
+s89,navy/straw,0
+s90,nougat/straw,0
+s91,nougat/turquoise,0
+s92,denim/sand,0
+s93,straw/orange,0
+s94,brown/sand,0
+s95,natural/brown,0
+s96,titan,0
+s97,carbon/light grey,0
+s98,natural/red,0
+s99,natural/grey,0
+t00,natural/denim,0
+t01,denim/off white,0
+t02,olive/off white,0
+t03,neon pink/white,0
+t04,red/green,0
+t05,dark khaki/green,0
+t06,navy/green,0
+t07,royal/green,0
+t08,aquamarine,0
+t09,green fluo,0
+t10,clear wash denim,0
+t11,black opal melange,0
+t12,king blue melange,0
+t13,kiwi melange,0
+t14,brilliant orange,0
+t15,burgundy red,0
+t16,charcoal grey melange,0
+t17,college green,0
+t18,heather grey melange,0
+t19,pure white,0
+t20,swiss navy,0
+t21,warm red,0
+t22,fuchsia fluo,0
+t23,black organic,0
+t24,bubble gum pink,0
+t25,camouflage green,0
+t26,dusty blue,0
+t28,nautical navy,0
+t29,powder pink,0
+t30,soft yellow,0
+t32,denim marl,0
+t33,cranberry marl,0
+t34,charcoal marl,0
+t35,white/heather grey melange,0
+t36,white/nautical navy,0
+t37,dark heather grey,0
+t38,retro heather royal,0
+t39,retro heather green,0
+t41,vintage heather navy,0
+t42,heather sport scarlet red,0
+t43,heather sport dark maroon,0
+t44,heather sport dark green,0
+t45,heather sport dark navy,0
+t46,heather sport royal,0
+t47,heather olive,0
+t48,heather mauve,0
+t49,heather stone,0
+t50,heather deep teal,0
+t51,heather black,0
+t52,heather light jeans,0
+t53,brut denim,0
+t54,slate blue,0
+t55,heather oxblood,0
+t56,heather denim,0
+t57,heather light grey,0
+t58,heather dark grey,0
+t59,heather royal blue,0
+t60,tan,0
+t61,sahara,0
+t62,vintage black,0
+t63,vintage light grey,0
+t64,vintage military green,0
+t65,vintage oxford navy,0
+t66,black/graphite grey,0
+t67,bright royal/black/white,0
+t68,bright royal/french navy/white,0
+t69,classic red/black,0
+t70,classic red/black/white,0
+t71,french navy/putty,0
+t72,graphite grey/black,0
+t73,classic pink/graphite grey/white,0
+t74,french navy/light grey,0
+t75,sky blue/french navy/white,0
+t76,jet black,0
+t77,camel/navy,0
+t78,shock blue,0
+t79,steel/black,0
+t80,airforce blue,0
+t81,laser blue,0
+t82,graphite grey/graphite grey,0
+t83,solver,0
+t84,chocolate/sand,0
+t85,french navy/sky blue,0
+t86,fuchsia/graphite grey,0
+t87,lime green/graphite grey,0
+t88,porange/graphite grey,0
+t89,orange/graphite grey,0
+t90,sand/chocolate,0
+t91,surf blue/graphite grey,0
+t92,yellow/graphite grey,0
+t93,airforce blue/graphite grey,0
+t94,claret,0
+t95,classic pink/graphite grey,0
+t96,coral/light grey,0
+t97,emerald/graphite grey,0
+t98,light grey/graphite grey,0
+t99,mint green/light grey,0
+u00,sky blue/french navy,0
+u01,true pink/graphite grey,0
+u02,white/graphite grey,0
+u03,fluorescent pink/black,0
+u04,jungle camo/black,0
+u05,electric yellow/black,0
+u06,airforce blue/french navy,0
+u07,jungle camo,0
+u08,midnight camo/black,0
+u09,olive green/black,0
+u10,mint green,0
+u11,navy dusk,0
+u12,claret/tan,0
+u13,military green/tan,0
+u14,navy dusk/tan,0
+u15,natural/true pink,0
+u16,pastel blue,0
+u17,pastel pink,0
+u18,pastel lemon,0
+u19,pastel mint,0
+u20,raspberry pink,0
+u21,classic pink/white,0
+u22,lavender/white,0
+u23,pastel blue/white,0
+u24,pastel lemon/white,0
+u25,pastel mint/white,0
+u26,pastel pink/white,0
+u27,pink/grey,0
+u28,bottle green/grey,0
+u29,royal/grey,0
+u30,nubuck tan,0
+u31,washed black,0
+u32,black/grey marl,0
+u33,black pure,0
+u34,navy blue,0
+u35,fire red,0
+u36,solar yellow,0
+u37,millennial pink,0
+u38,radiant purple,0
+u39,urban purple,0
+u40,orchid green,0
+u41,millennial khaki,0
+u42,urban khaki,0
+u43,urban orange,0
+u44,millennial lilac,0
+u45,millennial mint,0
+u46,heather forest,0
+u47,vintage heather red,0
+u48,jacquard blue,0
+u49,light grey heather,0
+u50,blue rinse,0
+u51,storm grey/navy,0
+u52,anthracite heather,0
+u53,deep grey heather,0
+u54,fuchsia/fine grey,0
+u55,purple/oxford grey,0
+u56,marl dark grey,0
+u57,marl silver,0
+u58,sporty royal blue,0
+u59,striped navy/white,0
+u60,rainbow,0
+u61,blue grey sprinkle,0
+u63,midnight camo,0
+u64,arctic camouflage,0
+u65,pastel peach,0
+u66,grey/off white,0
+u67,flo pink,0
+u68,flo orange,0
+u69,flo yellow,0
+u70,flo green,0
+u71,super pink,0
+u72,combat,0
+u73,anthracite/petrol,0
+u74,anthracite/navy,0
+u75,fuchsia/navy,0
+u76,off white/dark grey,0
+u77,black/oxford grey,0
+u78,light royal blue/oxford grey,0
+u79,white/oxford grey,0
+u80,black/dark grey heather,0
+u81,navy/dark grey heather,0
+u82,cream/grey heather,0
+u83,navy/grey heather,0
+u84,deep khaki,0
+u85,mossy green/black,0
+u86,black rinse,0
+u87,camel heather,0
+u88,candy pink heather,0
+u89,mykonos blue heather,0
+u90,wood,0
+u92,Les Incontournables,0
+u93,The Core Collection,0
+u94,Premium & Original,0
+u96,Outdoor,0
+u97,Corporate,0
+u98,Prowear,0
+u99,metal,0
+v00,flame/black,0
+v01,olive/camouflage,0
+v02,dark melange/green,0
+v03,dark melange/red,0
+v04,bright blue/navy,0
+v05,dark melange/royal,0
+v06,dark melange/yellow,0
+v07,fern green/black,0
+v08,blue/navy,0
+v09,yellow/silver,0
+v10,carbon/white,0
+v11,navy/bright blue,0
+v12,pink/carbon,0
+v13,pink/magenta,0
+v14,fern green/grey heather,0
+v15,pink/grey heather,0
+v16,indigo/brown,0
+v17,indigo/black,0
+v18,light grey/carbon,0
+v19,black/burgundy,0
+v20,black/sand,0
+v21,sand/black,0
+v22,smaragd,0
+v23,frost grey/black,0
+v24,HWCH,0
+v25,white/blue buttons,0
+v26,light blue/blue buttons,0
+v27,bubble gum pink/washed white,0
+v28,navy/washed white,0
+v29,red/washed white,0
+v30,vanilla,0
+v31,alaskan blue,0
+v32,new light grey,0
+v33,sports grey,0
+v35,wild lime,0
+v36,cherry berry,0
+v37,bright rose,0
+v38,chalk pink,0
+v39,pansy,0
+v40,heather graphite,0
+v42,salmon,0
+v43,terra spice,0
+v44,yellow/blue,0
+v45,dark grey transition,0
+v46,light grey transition,0
+v47,blue transition,0
+v48,storm,0
+v49,heather dust,0
+v50,VK PL - 100 CHF,0
+v51,EK HWCH,0
+v52,soft olive,0
+v53,heather rose,0
+v54,turquoise/light grey,0
+v55,soft white,0
+v56,clear/black,0
+v57,carbon melange,0
+v58,ocean melange,0
+v59,indigo melange,0
+v60,brick red melange,0
+v61,maroon marl,0
+v62,bright navy marl,0
+v63,white/oxford blue,0
+v64,oxford navy/oxford blue,0
+v65,oxford red/cream,0
+v66,oxford blue/oxford navy,0
+v67,white/silver/convoy grey,0
+v68,light blue/mid blue/bright navy,0
+v69,white/oxford blue/bright navy,0
+v70,black/oxford grey/convoy grey,0
+v71,bright navy/oxford blue/white,0
+v72,flame,0
+v73,heather red,0
+v74,neon green/black,0
+v75,black/royal,0
+v76,fluorescent orange/grey,0
+v77,fluorescent yellow/grey,0
+v78,off red,0
+v79,cognac,0
+v80,grey heather/fluo pink,0
+v81,icy white,0
+v82,icy navy,0
+v83,icy grey,0
+v84,pistachio green,0
+v85,night navy heather,0
+v86,natural/pink,0
+v87,natural/classic red,0
+v88,natural/french navy,0
+v89,ash heather,0
+v90,night blue heather,0
+v91,slub grey heather,0
+v92,vintage dark red,0
+v93,vintage marsala,0
+v94,oxford grey/black,0
+v95,light charcoal,0
+v96,night navy,0
+v97,heather khaki,0
+v98,oxblood,0
+v99,creamy white,0
+vo1,clover,0
+vo2,fox,0
+vo3,lollipop,0
+vo4,meadow green,0
+vo5,pepplestone,0
+vo6,poseidon,0
+vo8,salamander,0
+vo9,sea shimmer,0
+vs1,shadow,0
+vs2,skyline,0
+vs3,tibet,0
+w00,creamy dark blue,0
+w01,charcoal melange/black,0
+w02,grey melange/french navy,0
+w03,creamy blue,0
+w04,creamy pink,0
+w05,light olive,0
+w06,white/anthracite,0
+w07,ink melange,0
+w08,petrol melange,0
+w09,rose melange,0
+w10,atlantic/white,0
+w11,denim/natural,0
+w12,chili/natural,0
+w13,grey heather/red,0
+w14,bright blue/white,0
+w15,bright orange/white,0
+w16,bright yellow/white,0
+w17,dark grey melange/black,0
+w18,denim/black,0
+w19,caramel/brown,0
+w20,bright blue/natural,0
+w21,bright orange/natural,0
+w22,bright pink/natural,0
+w23,bright yellow/natural,0
+w24,black/turquoise/white,0
+w25,navy/kiwi/white,0
+w26,royal/white/white,0
+w27,anthracite/turquoise,0
+w28,anthracite/light grey,0
+w29,petrol/mint,0
+w30,anthracite/light blue,0
+w31,glacier melange,0
+w32,faded denim,0
+w33,bright navy,0
+w34,angora,0
+w35,cacao,0
+w36,marsala,0
+w37,azure aqua,0
+w38,graphite/red/white,0
+w39,avio,0
+w40,striped white/smoke,0
+w41,vintage graphite,0
+w42,vintage sapphire,0
+w43,striped dark grey/light grey,0
+w44,striped dark grey/tropical pink,0
+w45,striped denim/sky blue,0
+w46,marl navy,0
+w47,marl fir green,0
+w48,marl wine,0
+w49,striped white/red,0
+w50,grey heather/black,0
+w51,french navy heather/grey heather,0
+w52,wine heather/grey heather,0
+w53,dark khaki/storm grey,0
+w54,navy/storm grey,0
+w55,olive camouflage,0
+w56,dark blue denim,0
+w57,washed smoky blue,0
+w58,washed charcoal,0
+w59,washed light khaki,0
+w60,washed marsala,0
+w61,striped navy/off white,0
+w62,jacquard dark grey,0
+w63,marl storm grey,0
+w64,icy mint,0
+w65,hunting green,0
+w66,atomic blue,0
+w67,green gecko,0
+w68,safety yellow,0
+w69,knockout pink,0
+w70,crush orange,0
+w71,graphite/safety yellow,0
+w72,white/indigo,0
+w73,hunting green/red,0
+w74,black/steel grey,0
+w75,navy/new light grey,0
+w76,steel grey/red,0
+w77,new light grey/aqua,0
+w78,flame/light grey,0
+w79,kelly green/black,0
+w80,black/lemon/black,0
+w81,bright green/white/black,0
+w82,royal blue/lemon/navy,0
+w83,royal blue/white/navy,0
+w84,black/space grey,0
+w85,snow/navy,0
+w86,ink blue/navy,0
+w87,Cover,0
+w88,Essentials,0
+w89,Sport,0
+w90,Fashion,0
+w91,fusion red,0
+w92,shocking green,0
+w93,granat,0
+w94,light royal blue melange,0
+w95,dark khaki melange,0
+w96,smokey blue,0
+w97,striped pale blue,0
+w98,snow grey,0
+w99,deep blue,0
+ww1,Workwear,0
+x00,true coral,0
+x01,navy/light royal blue,0
+x02,dark royal melange/navy,0
+x03,olive melange/black,0
+x04,bright orange/silver,0
+x05,bright yellow/silver,0
+x06,dark green/light grey,0
+x07,bronze/black,0
+x08,silver/light grey,0
+x09,graphite/camouflage,0
+x10,rose/purple,0
+x11,natural/camel,0
+x12,grey/light grey,0
+x13,bordeaux/natural,0
+x14,soft green/green,0
+x15,navy/turquoise/white,0
+x16,navy/light green/white,0
+x17,black/black/dark grey,0
+x18,dark green/dark green,0
+x19,sun yellow/black,0
+x20,light grey/light grey,0
+x21,black/black printed,0
+x22,white/black printed,0
+x23,black printed,0
+x24,black printed/black,0
+x25,dark olive/dark olive,0
+x26,denim heather,0
+x27,coral heather,0
+x28,charcoal/grey,0
+x29,white/new light grey,0
+x30,royal/steel grey,0
+x31,black/light grey melange,0
+x32,light grey melange/navy,0
+x33,bottle/white,0
+x34,dark violet,0
+x35,champagne,0
+x36,pale violet,0
+x37,pure orange,0
+x38,pink fizz,0
+x39,hawaiian blue,0
+x40,nude,0
+x41,desert,0
+x42,melon,0
+x43,melon orange,0
+x44,pure sky,0
+x45,grey fog,0
+x46,light jade,0
+x47,elephant grey,0
+x48,heather mid grey,0
+x49,heather asphalt,0
+x50,heather dark green,0
+x51,yellow fizz,0
+x52,magenta pink,0
+x53,soft rose,0
+x54,blue fog,0
+x55,dark cherry,0
+x56,aqua green,0
+x57,nordic blue,0
+x58,creamy green,0
+x59,neomint,0
+x60,ancient pink,0
+x61,mellow yellow,0
+x62,light royal/white,0
+x63,oxford grey/white,0
+x64,wine/oxford grey,0
+x65,classic navy,0
+x66,navy/oxford grey/white,0
+x67,white/bubble gum pink,0
+x68,white/powder pink,0
+x69,white/surf blue,0
+x70,carolina blue/white/carolina blue,0
+x71,royal/white/royal,0
+x72,red/white/red,0
+x73,navy/white/navy,0
+x74,kelly/white/kelly,0
+x75,black/white/black,0
+x76,brown/white/brown,0
+x77,dark navy/dark navy,0
+x78,maroon/maroon,0
+x79,heather grey/heather grey,0
+x80,spruce,0
+x81,buck,0
+x82,black/teal,0
+x83,heather grey/maroon,0
+x84,maroon/black,0
+x85,purple/gold,0
+x86,heather grey/royal,0
+x87,navy/maroon,0
+x88,heather grey/red,0
+x89,brown/khaki,0
+x90,curry,0
+x91,green camouflage,0
+x92,pepper green,0
+x93,hawaiian ocean,0
+x94,fresh green,0
+x95,rose brown,0
+x96,moss green/khaki,0
+x97,khaki/white,0
+x98,buck/white,0
+x99,silver/white,0
+y00,heather grey/white,0
+y01,white/black/burgundy,0
+y02,white/olive/orange,0
+y03,italia/black,0
+y04,italia/navy,0
+y05,italia/royal,0
+y06,white/black/green,0
+y07,dark grey/white/dark grey,0
+y08,peppermint,0
+y09,candy,0
+y10,vintage light denim,0
+y11,ribbon pink,0
+y12,reflex blue,0
+y13,oatmeal,0
+y14,dark grey/red,0
+y16,fennel,0
+y17,grey/light yellow/black,0
+y18,grey/navy/navy,0
+y19,celtic green,0
+y20,navy/burgundy,0
+y21,navy/burgundy/beige,0
+y22,olive/khaki,0
+y23,white/burgundy/black,0
+y24,white/yellow/dark grey,0
+y25,avio melange,0
+y26,mustard melange,0
+y27,black/bright royal,0
+y28,black/classic red,0
+y29,bright royal/white,0
+y30,classic red/white,0
+y31,french navy/classic red,0
+y32,graphite grey/oyster grey,0
+y33,putty/french navy,0
+y34,antique grey,0
+y35,dusky pink,0
+y36,fluorescent green,0
+y37,heather oatmeal,0
+y38,heather pink,0
+y39,heather surf,0
+y40,oxford navy,0
+y41,french navy/stone,0
+y42,stone/french navy,0
+y43,blush,0
+y44,ocean green,0
+y45,azure blue/oxford navy,0
+y46,graphite grey/blush,0
+y47,light grey/citron,0
+y48,oxford navy/fire red,0
+y49,oxford navy/mustard,0
+y50,black/classic red/white,0
+y51,light grey/black/off white,0
+y52,off white/navy/sky blue,0
+y53,antique teal,0
+y54,heather coral,0
+y55,heather mint,0
+y56,black/surf blue,0
+y57,bottle green/bottle green,0
+y58,bright royal/bright royal,0
+y59,burgundy/light grey,0
+y60,chocolate/caramel,0
+y61,classic red/classic red,0
+y62,pastel blue/pastel blue,0
+y63,pastel pink/pastel pink,0
+y64,pure green/white,0
+y65,fluorescent green/white,0
+y66,fluorescent orange/white,0
+y67,fluo pink/white,0
+y68,fluorescent pink/white,0
+y69,fluorescent yellow/white,0
+y70,sunflower/white,0
+y71,summer caramel,0
+y72,autumn stone,0
+y73,winter blue,0
+y74,grey/bright yellow/black,0
+y75,dove grey melange,0
+y76,bright royal/off white,0
+y77,burgundy/off white,0
+y78,classic red/off white,0
+y79,french navy/off white,0
+y80,kelly green/off white,0
+y81,light grey/french navy,0
+y82,military green/military green,0
+y83,mint green/white,0
+y84,black/red-gold,0
+y85,blue/white-red,0
+y86,gold/green-white,0
+y87,blue/green-white-red,0
+y88,orange/red-white-blue,0
+y89,black/yellow-red,0
+y90,green/gold-white,0
+y91,emerald/white,0
+y92,arctic camo,0
+y93,blue camo,0
+y94,grey camo,0
+y95,french navy/neon orange,0
+y96,mixed,0
+y97,spacer grey,0
+y98,spacer red,0
+y99,spacer royal,0
+z00,spacer turquoise,0
+z01,geo blue,0
+z02,geo grey,0
+z03,geo lime,0
+z04,geo orange,0
+z05,candy floss pinks,0
+z06,caribbean blues,0
+z07,storm greys,0
+z08,sunset reds,0
+z09,tropical greens,0
+z10,white/sky,0
+z11,pink/pink,0
+z12,sporty navy,0
+z13,red melange/anthracite melange,0
+z14,carbon/carbon,0
+z15,optic white,0
+z16,anthracite melanged,0
+z17,orange fluo,0
+z18,neon white,0
+z20,yellow/orange,0
+z21,powder yellow,0
+z22,blaze orange,0
+z23,croissant,0
+z24,baby pink,0
+z25,multicam,0
+z26,multicam alpina,0
+z27,multicam black,0
+z28,multicam khaki,0
+z29,multicam tropic,0
+z30,silver/white/silver,0
+z31,maroon/white/maroon,0
+z32,khaki/white/khaki,0
+z33,night melange,0
+z34,pebble,0
+z35,vintage jungle camo,0
+z36,vintage olive,0
+z37,vintage stone,0
+z38,antique burgundy,0
+z39,antique moss green,0
+z40,antique mustard,0
+z41,antique petrol,0
+z42,antique royal blue,0
+z43,dark graphite,0
+z44,smoke grey,0
+z45,surf blue/white,0
+z46,white/bright royal,0
+z47,black/graphite grey/classic red,0
+z48,black/graphite grey/white,0
+z49,bottle green/black/white,0
+z50,french navy/bright royal/white,0
+z51,french navy/classic red/white,0
+z52,french navy/putty/white,0
+z53,light grey/french navy/bright royal,0
+z54,orange/black/white,0
+z55,bottle green/off white,0
+z56,fuchsia/off white,0
+z57,graphite grey/light grey,0
+z58,off white/mocha,0
+z60,white/classic red,0
+z61,surf blue/off white,0
+z62,black melange/black/silver,0
+z63,carbon melange/black/red,0
+z64,navy melange/navy/royal,0
+z65,deep forest/yellow,0
+z66,electric blue/nautic blue,0
+z67,navy/electric blue,0
+z68,navy matt,0
+z69,grey melange/black,0
+z70,brown melange/black,0
+z71,navy melange/white,0
+z72,white/grey melange/black,0
+z73,burgundy/burgundy,0
+z74,burgundy/stone,0
+z75,khaki/stone,0
+z76,mustard/black,0
+z77,white/mint,0
+z78,granite grey,0
+z79,black/magenta,0
+z80,black/petrol,0
+z81,spacer coral,0
+z82,spacer lime,0
+z83,spacer olive,0
+z84,coral/coral,0
+z85,natural/natural,0
+z86,dusty indigo,0
+z87,dusty mint,0
+z88,white/navy stripe,0
+z89,dusty yellow,0
+z90,okay orange,0
+z91,dusty purple,0
+z92,ivory cream,0
+z93,check light blue/white,0
+z94,striped light blue/white,0
+z95,sporty red,0
+z96,ice mint,0
+z97,light turquoise,0
+z98,deep burgundy,0
+z99,graphite grey/black/bright royal,0
+za0,military,0
+za1,coyote brown,0
+za2,deep green,0
+za3,dusty orange,0
+za4,khaki/brown,0
+za5,olive/chestnut,0
+za6,grey sprinkle,0
+za7,gold yellow,0
+za8,paramedic green/yellow,0
+za9,electric blue/white,0
+zb0,light red/white,0
+zb1,black/carbon/light red,0
+zb2,bright blue/navy/bright blue,0
+zb3,carbon/bright yellow/carbon,0
+zb4,light red/black/light red,0
+zb5,classic blue/white,0
+zb6,burgundy/brown,0
+zb7,moss green/brown,0
+zb8,navy/brown,0
+zb9,black/grey/orange,0
+zc0,rust orange,0
+zc1,evergreen,0
+zc2,acid green,0
+zc3,columbia blue,0
+zc4,light avio,0
+zc5,pine,0
+zc6,arid/brown,0
+zc7,multicam arid/tan,0
+zc8,burnt olive,0
+zc9,pale grey,0
+zd0,loden,0
+zd1,ocher,0
+zd2,light grey sprinkle,0
+zd3,desert sand,0
+zd4,rose gold,0
+zd5,oyster,0
+zd6,combat camo,0
+zd7,blush pink,0
+zd8,natural/amber,0
+zd9,natural/sage green,0
+ze0,black/mustard,0
+ze1,oyster/black,0
+ze2,black/mexican skull,0
+ze3,navy/mariniere,0
+ze4,navy/red tartan,0
+ze5,black/skate graffiti,0
+ze6,dusty beige,0
+ze7,burgundy/grey,0
+ze8,grey/royal,0
+ze9,green/grey,0
+zf1,olive/green,0
+zf2,royal/light blue,0
+zf3,royal/yellow fluo,0
+zf4,grey/burgundy,0
+zf5,white/fuchsia,0
+zf6,dark grey/turquoise,0
+zf7,natural/beige,0
+zf8,avio/brown,0
+zf9,black/green fluo,0
+zg0,orange fluo/black,0
+zg1,white/green fluo,0
+zg2,black/yellow fluo,0
+zg3,green fluo/black,0
+zg4,black/grey melange/white,0
+zg5,bottle green/grey/beige,0
+zg6,cardinal/black,0
+zg7,grey melange/cardinal/beige,0
+zg8,navy/grey melange/white,0
+zg9,khaki camouflage,0
+zh0,grey camouflage,0
+zh1,white camouflage,0
+zh2,camouflage/orange,0
+zh3,white/germany,0
+zh4,white/italia,0
+zh5,kentucky blue,0
+zh6,amazon green,0
+zh7,hibiscus red,0
+zh8,black/forest green,0
+zh9,navy/royal blue,0
+zi0,recycled white,0
+zi1,recycled black,0
+zi2,recycled navy,0
+zi3,toffee,0
+zi4,nightfall,0
+zi5,ebony grey,0
+zi6,amber glow/ebony grey,0
+zi7,black/ebony grey,0
+zi8,nightfall navy/dark methyl,0
+zi9,black/amber glow,0
+zj0,nightfall navy/ebony grey,0
+zj1,charcoal grey marl/ebony grey,0
+zj2,amber glow/black,0
+zj3,ebony grey/black,0
+zj4,dark methyl/nightfall navy,0
+zj5,charcoal grey marl/black,0
+zj6,charcoal grey/black,0
+zj7,nightfall navy,0
+zj8,dark denim heather,0
+zj9,marl green,0
+zk0,cloudy blue heather,0
+zk1,green marble heather,0
+zk2,true indigo,0
+zk3,coconut milk,0
+zk4,mineral blue,0
+zk5,sport heather,0
+zk6,deep green/black,0
+zk7,roasted coffee,0
+zk8,camo green,0
+zk9,dark forest,0
+zl0,navy pure,0
+zl1,ivy green,0
+zl2,meta orange,0
+zl3,meta fuchsia,0
+zl4,meta lilac,0
+zl5,meta turquoise,0
+zl6,meta gold,0
+zl7,blush blue,0
+zl8,blush mint,0
+zl9,lotus pink,0
+zm0,amalfi yellow,0
+zm1,amalfi teal,0
+zm2,amalfi grey,0
+zm3,amalfi green,0
+zm4,amalfi coral,0
+zm5,amalfi blue,0
+zm6,heather grey fog,0
+zm7,heather tarmac,0
+zm8,tahiti coral,0
+zm9,lake blue,0
+zn0,lotus blue,0
+zn1,acid lime,0
+zn2,pop yellow,0
+zn3,pop turquoise,0
+zn4,pop tomato,0
+zn5,pop green,0
+zn6,riviera,0
+zn7,white/anthracite melange,0
+zn8,light melange/black,0
+zn9,neon orange/black,0
+zo0,grey melange/grey heather,0
+zo1,royal/grey heather,0
+zo2,clay,0
+zo3,nude pink,0
+zo4,soft mint,0
+zo5,navy/oyster/yellow,0
+zo6,soft pink/oyster,0
+zo7,taupe/oyster,0
+zo8,almond,0
+zo9,almond marl,0
+zp0,black marl,0
+zp1,military green/black,0
+zp2,oatmeal/black,0
+zp3,oxford navy/black,0
+zp4,dusky pink/off white,0
+zp5,mustard/off white,0
+zp6,vintage bottle green,0
+zp7,vintage cornflower,0
+zp8,vintage dusky pink,0
+zp9,vintage orange,0
+zq0,vintage sand,0
+zq1,soft white/black,0
+zq2,soft white/light grey,0
+zq3,soft white/rose gold,0
+zq4,myrobalan stone,0
+zq5,pomegranate rose,0
+zq6,sea salt,0
+zq7,natural/light grey,0
+zq8,organic natural/mocha,0
+zq9,powder rose,0
+zr0,black/oxford blue,0
+zr1,oxford blue/black,0
+zr2,new royal,0
+zr3,seal grey,0
+zr4,seal grey/black,0
+zr5,vibrant purple/black/white,0
+zr6,extreme green/black,0
+zr7,dark spruce/black,0
+zr8,blue sprinkle,0
+zr9,green sprinkle,0
+zs0,warm grey sprinkle,0
+zs2,navy/french blue,0
+zs3,french blue/navy,0
+zs4,magma/black,0
+zs5,rock grey/black,0
+zs6,new royal/black,0
+zs7,hot pink/black,0
+zs8,royal blue/seal grey,0
+zs9,classic red/seal grey,0
+zt0,soft lavender,0
+zt1,duck egg,0
+zt2,latte,0
+zt3,white/light steel,0
+zt4,ballad blue,0
+zt5,prism pink,0
+zt6,white/black/black,0
+zt7,red/white/royal,0
+zt8,typhon,0
+zt9,raid,0
+zu0,highlander,0
+zu1,wraith,0
+zu2,dark leaf green,0
+zu3,spiced coral,0
+zu4,air blue,0
+zu5,green glow,0
+zu6,navy/seal grey,0
+zu7,seal grey marl,0
+zu8,oxford blue marl/navy,0
+zu9,laurel,0
+zv0,black/ash,0
+zv1,black/magma,0
+zv2,navy/oxford blue,0
+zv3,black/seal grey,0
+zv4,black/new royal,0
+zv5,navy/new royal,0
+zv6,new royal/navy,0
+zv7,cherry/white,0
+zv8,hi vis yellow,0
+zv9,hi vis orange,0
+zw0,black/hi vis yellow,0
+zw1,hi vis orange/black,0
+zw2,hi vis orange/grey,0
+zw3,hi vis orange/hi vis yellow,0
+zw4,hi vis orange/navy,0
+zw5,hi vis yellow/black,0
+zw6,hi vis yellow/grey,0
+zw7,hi vis yellow/navy,0
+zw8,hi vis yellow/purple,0
+zw9,hi vis yellow/royal blue,0
+zx0,lime/hi vis yellow,0
+zx1,navy/hi vis yellow,0
+zx2,hi vis orange/royal blue,0
+zx3,paramedic green,0
+zx4,paramedic green/hi vis yellow,0
+zx5,purple/hi vis yellow,0
+zx6,raspberry/hi vis yellow,0
+zx7,red/hi vis yellow,0
+zx8,royal blue/hi vis yellow,0
+zx9,sea green,0
+zy0,milky beige,0
+zy1,white snow,0
+zy2,bandera red,0
+zy3,taupe/white,0
+zy4,orange/hi vis yellow,0
+zy5,orange/royal blue,0
+zy6,angora melange,0
+zy7,night navy melange,0
+zy8,burnt ochre,0
+zy9,mineral green,0
+zz0,washed brandy,0
+zz1,washed dark navy,0
+zz2,washed dusky khaki,0
+zz3,red/navy checked,0
+zz4,storm grey/navy checked,0
+zz5,chocolate/dark beige/black,0
+zz6,forest green/navy/black,0
+zz7,red/dark beige/black,0
+zz8,storm grey/navy/black,0
+zz9,camel/black,0
+zza,washed caramel coffee,0
+zzb,washed green clay,0
+zzc,washed natural,0
+zzd,washed olive gray,0
+zze,washed pink ochre,0
+zzf,washed sunflower,0
+zzg,black jhoot,0
+zzh,dark grey jhoot,0
+zzi,forest green jhoot,0
+zzj,light royal blue jhoot,0
+zzk,melange jhoot,0
+zzl,navy blue jhoot,0
+zzm,orange jhoot,0
+zzn,oxford grey jhoot,0
+zzo,red jhoot,0
+zzp,white jhoot,0
+zzq,vegetal paper,0
+zzr,straw,0
+zzs,green empire,0
+zzt,carbon grey,0
+zzu,carbon grey/black,0
+zzv,army/dark army,0
+zzw,shear beige/beige,0
+zzx,carbon grey/shear beige,0
+zzy,army/shear beige,0
+zzz,ruby,0

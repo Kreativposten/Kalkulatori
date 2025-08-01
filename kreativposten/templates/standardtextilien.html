@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% set active_page = 'stammdaten' %}
+
+{% block title %}Standardtextilien - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem; }
+    .btn-secondary { background-color: #6c757d; color: white; text-decoration: none; padding: .6rem 1.2rem; font-size: 1rem; border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+    th { background-color: #f8f9fa; }
+</style>
+
+<div class="main-content-padded">
+    <div class="page-header">
+        <h1>Übersicht der Standardtextilien</h1>
+        <a href="{{ url_for('stammdaten.stammdaten') }}" class="btn-secondary">&laquo; Zurück zur Stammdaten-Übersicht</a>
+    </div>
+
+    <div class="card">
+        <p style="color: var(--text-secondary);">Dies ist eine Liste aller Artikelvarianten, die du als Standardartikel für dein Lager definiert hast.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th>SKU</th>
+                    <th>Farbe</th>
+                    <th>Größe</th>
+                    <th>Lagerbestand</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in artikel %}
+                <tr>
+                    <td>{{ item.produkt.name }}</td>
+                    <td>{{ item.sku }}</td>
+                    <td>{{ item.farbe }}</td>
+                    <td>{{ item.groesse }}</td>
+                    <td>{{ item.lagerbestand }} Stk.</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Du hast noch keine Artikel als Standard markiert.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

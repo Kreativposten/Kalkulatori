@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Angebot {{ data.angebot_nr }}</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        body { font-family: sans-serif; font-size: 9pt; color: #333; }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8mm; }
+        .logo { width: 45mm; height: auto; }
+        .doc-details { text-align: right; line-height: 1.5; }
+        .color-stripe { display: flex; height: 1.5mm; width: 100%; margin-top: 5mm; margin-bottom: 10mm; }
+        .color-block { flex-grow: 1; }
+        .address-block { line-height: 1.5; margin-bottom: 10mm; }
+        .subject { font-size: 14pt; font-weight: bold; margin-bottom: 8mm; }
+        .positions-table { width: 100%; border-collapse: collapse; margin-top: 5mm; }
+        .position-header-row { border-top: 2px solid #333; border-bottom: 1px solid #ccc; }
+        .position-header-row td { padding: 8px 4px; font-weight: bold; }
+        .position-body-row td { padding: 8px 4px; border-bottom: 1px solid #eee; vertical-align: top;}
+        .position-body-row .details { font-size: 8pt; color: #555; }
+        .cost-breakdown { margin-top: 10px; padding-left: 15px; }
+        .cost-breakdown table { width: 100%; font-size: 8.5pt; }
+        .cost-breakdown td { padding: 1px 0; }
+        .cost-breakdown .cost-line td:last-child { text-align: right; }
+        .cost-breakdown .cost-total { font-weight: bold; border-top: 1px solid #ccc; }
+        .print-specs { margin-top: 10px; }
+        .print-specs-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .print-spec-item { width: 30%; border: 1px solid #eee; padding: 5px; font-size: 8pt; }
+        .print-spec-item img { max-width: 100%; height: auto; margin-top: 5px; }
+        .text-right { text-align: right; }
+        .totals-section { float: right; width: 50%; margin-top: 10mm; }
+        .totals-section table { width: 100%; }
+        .totals-section td { padding: 3px; }
+        .totals-section .grand-total { border-top: 2px solid #333; font-weight: bold; font-size: 11pt; }
+        footer { position: fixed; bottom: -15mm; left: 0; right: 0; font-size: 7pt; border-top: 1px solid #ccc; padding-top: 5px; }
+        footer table { width: 100%; }
+        footer td { vertical-align: top; }
+        .qr-code-footer { width: 25mm; height: 25mm; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="Logo Kreativposten Vektorisiert.png" class="logo">
+        <div class="doc-details">
+            <strong>Angebot</strong><br>
+            Nr.: {{ data.angebot_nr }}<br>
+            Datum: {{ data.datum }}
+        </div>
+    </header>
+    
+    <div class="color-stripe">
+        <div class="color-block" style="background-color: #a7d129;"></div><div class="color-block" style="background-color: #f7d716;"></div>
+        <div class="color-block" style="background-color: #e67e22;"></div><div class="color-block" style="background-color: #e74c3c;"></div>
+        <div class="color-block" style="background-color: #ec4899;"></div><div class="color-block" style="background-color: #8e44ad;"></div>
+        <div class="color-block" style="background-color: #3498db;"></div><div class="color-block" style="background-color: #2ecc71;"></div>
+    </div>
+
+    <div class="address-block">
+        {{ data.kunde.name }}<br>
+        {% if data.kunde.firma %}{{ data.kunde.firma }}<br>{% endif %}
+    </div>
+
+    <div class="subject">Angebot {{ data.angebot_nr }}</div>
+    <p>Vielen Dank für Ihre Anfrage. Folgende Leistungen bieten wir Ihnen an:</p>
+    
+    <table class="positions-table">
+        {% for item in data.positionen %}
+        <tr class="position-header-row">
+            <td>Pos. {{ item.pos }}</td>
+            <td>{{ item.name }}</td>
+            <td class="text-right">{{ item.menge }} Stk.</td>
+        </tr>
+        <tr class="position-body-row">
+            <td colspan="3">
+                <div class="details">Details: {{ item.artikel_liste|join(', ') }}</div>
+
+                <div class="cost-breakdown">
+                    <table>
+                        {% if item.textil_gesamt_brutto > 0 or "Katalogtextil" in item.name %}
+                        <tr><td colspan="2"><strong>Textil-Kosten</strong></td></tr>
+                        <tr class="cost-line"><td>Grundpreis ({{ item.menge }} Stk. &times; {{ "%.2f"|format(item.textil_einzel_brutto) }} €)</td><td>{{ "%.2f"|format(item.textil_gesamt_vor_rabatt) }} €</td></tr>
+                        <tr class="cost-line"><td>Mengenrabatt ({{ "%.0f"|format(item.textil_rabatt_prozent) }}%)</td><td>-{{ "%.2f"|format(item.textil_gesamtrabatt_betrag) }} €</td></tr>
+                        <tr class="cost-total"><td>Textil Gesamt</td><td>{{ "%.2f"|format(item.textil_gesamt_brutto) }} €</td></tr>
+                        {% endif %}
+
+                        {% if item.druck_gesamt_brutto > 0 %}
+                        <tr><td colspan="2" style="padding-top: 8px;"><strong>Druck-Kosten</strong></td></tr>
+                        {% for druck in item.druck_details_live %}
+                        <tr class="cost-line"><td>- Druck '{{ druck.name }}' {% if druck.ist_mehrfach_rabattiert %} (rabattiert){% endif %}</td><td>{{ "%.2f"|format(druck.einzelpreis_vor_mengenrabatt * item.menge) }} €</td></tr>
+                        {% endfor %}
+                        <tr class="cost-line"><td>Mengenrabatt ({{ "%.0f"|format(item.druck_rabatt_prozent) }}%)</td><td>-{{ "%.2f"|format(item.druck_gesamtrabatt_betrag) }} €</td></tr>
+                        <tr class="cost-total"><td>Druck Gesamt</td><td>{{ "%.2f"|format(item.druck_gesamt_brutto) }} €</td></tr>
+                        {% endif %}
+
+                        {% if item.zuschlag_freistellen_brutto > 0 %}
+                        <tr><td colspan="2" style="padding-top: 8px;"><strong>Zuschläge</strong></td></tr>
+                        <tr class="cost-line"><td>Motiv nicht freigestellt</td><td>{{ "%.2f"|format(item.zuschlag_freistellen_brutto) }} €</td></tr>
+                        {% endif %}
+                    </table>
+                </div>
+
+                {% if item.druck_specs %}
+                <div class="print-specs">
+                    <strong>Druck-Spezifikationen:</strong>
+                    <div class="print-specs-container">
+                    {% for druck in item.druck_specs %}
+                        <div class="print-spec-item">
+                            <strong>{{ druck.position or 'Druck' }}</strong><br>
+                            {{ druck.typ }} {% if druck.breite > 0 %}(Breite: {{ druck.breite }} cm){% endif %}<br>
+                            {% if druck.filename %}
+                                <img src="uploads/{{ druck.filename }}">
+                            {% elif druck.beschreibung %}
+                                <i>{{ druck.beschreibung }}</i>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="totals-section">
+        <table>
+             {% if data.adjustments.mode == 'fixed' %}
+                <tr class="grand-total">
+                    <td>Pauschalpreis (brutto)</td>
+                    <td class="text-right">{{ "%.2f"|format(data.final_brutto) }} €</td>
+                </tr>
+                 <tr>
+                    <td colspan="2" class="text-right" style="font-size: 8pt;">
+                        (darin enthalten 19% MwSt.: {{ "%.2f"|format(data.mwst_betrag) }} €)
+                    </td>
+                </tr>
+             {% else %}
+                <tr>
+                    <td>Summe Positionen (netto)</td>
+                    <td class="text-right">{{ "%.2f"|format(data.positions_total / 1.19) }} €</td>
+                </tr>
+                {% if data.dringlichkeits_zuschlag > 0 %}
+                <tr>
+                    <td>Dringlichkeitszuschlag (netto)</td>
+                    <td class="text-right">{{ "%.2f"|format(data.dringlichkeits_zuschlag / 1.19) }} €</td>
+                </tr>
+                {% endif %}
+                {% if data.adjustments.surcharge.applied and data.adjustments.surcharge.amount > 0 %}
+                <tr>
+                    <td>Katalogaufschlag (netto)</td>
+                    <td class="text-right">{{ "%.2f"|format(data.adjustments.surcharge.amount / 1.19) }} €</td>
+                </tr>
+                {% endif %}
+                 {% if data.adjustments.additional_costs.applied and data.adjustments.additional_costs.amount > 0 %}
+                <tr>
+                    <td>{{ data.adjustments.additional_costs.description or 'Zusatzkosten' }} (netto)</td>
+                    <td class="text-right">{{ "%.2f"|format(data.adjustments.additional_costs.amount / 1.19) }} €</td>
+                </tr>
+                {% endif %}
+                <tr style="border-top: 1px solid #ccc;">
+                    <td><strong>Zwischensumme (netto)</strong></td>
+                    <td class="text-right"><strong>{{ "%.2f"|format(data.subtotal_netto) }} €</strong></td>
+                </tr>
+                 {% if data.adjustments.discount.applied and data.adjustments.discount.percent > 0 %}
+                <tr>
+                    <td>{{ data.adjustments.discount.description or 'Sonderrabatt' }} ({{data.adjustments.discount.percent}}%)</td>
+                    <td class="text-right">-{{ "%.2f"|format(data.discount_amount_netto) }} €</td>
+                </tr>
+                <tr style="border-top: 1px solid #ccc;">
+                    <td><strong>Gesamt nach Rabatt (netto)</strong></td>
+                    <td class="text-right"><strong>{{ "%.2f"|format(data.final_netto) }} €</strong></td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td>zzgl. 19% MwSt.</td>
+                    <td class="text-right">{{ "%.2f"|format(data.mwst_betrag) }} €</td>
+                </tr>
+                <tr class="grand-total">
+                    <td>Gesamtbetrag (brutto)</td>
+                    <td class="text-right">{{ "%.2f"|format(data.final_brutto) }} €</td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <footer>
+        <div class="color-stripe" style="margin-bottom: 2mm;">
+             <div class="color-block" style="background-color: #a7d129;"></div><div class="color-block" style="background-color: #f7d716;"></div>
+             <div class="color-block" style="background-color: #e67e22;"></div><div class="color-block" style="background-color: #e74c3c;"></div>
+             <div class="color-block" style="background-color: #ec4899;"></div><div class="color-block" style="background-color: #8e44ad;"></div>
+             <div class="color-block" style="background-color: #3498db;"></div><div class="color-block" style="background-color: #2ecc71;"></div>
+        </div>
+        <table>
+            <tr>
+                <td style="width: 25%;"><strong>Kreativposten</strong><br>Blumenstraße 56<br>73033 Göppingen<br>info@kreativposten.com<br>www.kreativposten.com</td>
+                <td style="width: 25%;"><strong>Bankverbindung</strong><br>Kreissparkasse Göppingen<br>IBAN: DE74 6105 0000 0015 2205 83<br>BIC: GOPSDE6GXXX</td>
+                <td style="width: 25%;"><strong>Inhaber</strong><br>Dennis Schnürer<br>USt-IdNr.: DE309756536<br>Steuernummer: 63380/34222</td>
+                <td style="width: 25%; text-align: right; font-size: 6.5pt; vertical-align: middle;">
+                    {% if data.portal_qr_code and data.portal_url %}
+                        <div style="display: inline-block; text-align: center; padding-left: 10px;">
+                            <img src="data:image/png;base64,{{ data.portal_qr_code }}" class="qr-code-footer" alt="QR Code zum Kundenportal">
+                            <p style="margin: 2px 0 0 0; font-weight: bold;">Ihr persönliches Auftragsportal</p>
+                            <p style="margin: 2px 0 0 0; word-break: break-all; font-size: 5.5pt;">{{ data.portal_url }}</p>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>

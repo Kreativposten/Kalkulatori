@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% set active_page = 'stammdaten' %}
+
+{% block title %}Artikelübersicht - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-header h2 { margin: 0; font-size: 1.2rem; }
+    .btn { display: inline-block; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: #007bff; border: none; padding: .6rem 1.2rem; font-size: 1rem; border-radius: 8px; text-decoration: none; }
+    .btn-secondary { background-color: #6c757d; }
+    .btn-small { padding: .25rem .5rem; font-size: .875rem; }
+    
+    .product-section + .product-section {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 2px solid var(--border-color);
+    }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+    th { background-color: #f8f9fa; }
+    tr:last-child td { border-bottom: none; }
+    .actions a { margin-right: 0.5rem; }
+</style>
+
+<div class="main-content-padded">
+    <div class="page-header">
+        <h1>Artikelübersicht (Varianten nach Produkt)</h1>
+        <a href="{{ url_for('stammdaten.stammdaten') }}">&laquo; Zurück zur Stammdaten-Übersicht</a>
+    </div>
+
+    {% for produkt in produkte %}
+    <div class="product-section">
+        <div class="card">
+            <div class="card-header page-header">
+                <h2>{{ produkt.name }} <small>({{ produkt.hersteller }})</small></h2>
+                <a href="{{ url_for('stammdaten.produkt_varianten_verwalten', produkt_id=produkt.id) }}" class="btn btn-small">Alle Varianten für dieses Produkt verwalten</a>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Farbe</th>
+                        <th>Größe</th>
+                        <th>EK Netto</th>
+                        <th>Lagerbestand</th>
+                        <th class="actions">Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for variante in produkt.varianten|sort(attribute='farbe')|sort(attribute='groesse') %}
+                    <tr>
+                        <td>{{ variante.sku }}</td>
+                        <td>{{ variante.farbe }}</td>
+                        <td>{{ variante.groesse }}</td>
+                        <td>{{ "%.2f"|format(variante.einkaufspreis_netto or 0) }} €</td>
+                        <td>{{ variante.lagerbestand }} Stk.</td>
+                        <td class="actions">
+                            <a href="{{ url_for('stammdaten.artikel_bearbeiten', variante_id=variante.id) }}" class="btn btn-secondary btn-small">Bearbeiten</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">Für dieses Produkt wurden noch keine Varianten angelegt.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+        <p>Es sind noch keine Produkte in der Datenbank vorhanden.</p>
+    {% endfor %}
+
+</div>
+{% endblock %}

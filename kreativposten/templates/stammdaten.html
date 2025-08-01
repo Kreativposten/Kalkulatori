@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% set active_page = 'stammdaten' %}
+
+{% block title %}Stammdaten - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+    .hub-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-decoration: none;
+        color: var(--text-primary);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 1px solid var(--border-color);
+    }
+    .hub-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .hub-card .material-symbols-outlined {
+        font-size: 3rem;
+        color: #3b82f6;
+    }
+    .hub-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+</style>
+
+<div class="main-content-padded">
+    <h1>Stammdaten-Verwaltung</h1>
+    <p style="margin-bottom: 2rem; color: var(--text-secondary);">Hier verwalten Sie die Kerndaten Ihrer Anwendung wie Produkte, Artikelvarianten und Lieferanten.</p>
+
+    <div class="hub-grid">
+        <a href="{{ url_for('stammdaten.produkte_verwalten') }}" class="hub-card">
+            <span class="material-symbols-outlined">category</span>
+            <h3>Produkte (Textilarten)</h3>
+        </a>
+        <a href="{{ url_for('stammdaten.artikel_uebersicht') }}" class="hub-card">
+            <span class="material-symbols-outlined">style</span>
+            <h3>Alle Artikel (Varianten)</h3>
+        </a>
+        <a href="{{ url_for('stammdaten.standardtextilien_uebersicht') }}" class="hub-card">
+            <span class="material-symbols-outlined">star</span>
+            <h3>Standardtextilien</h3>
+        </a>
+        <a href="{{ url_for('stammdaten.lieferanten_verwalten') }}" class="hub-card">
+            <span class="material-symbols-outlined">local_shipping</span>
+            <h3>Lieferanten</h3>
+        </a>
+        <a href="{{ url_for('stammdaten.import_artikeldaten') }}" class="hub-card">
+            <span class="material-symbols-outlined">upload_file</span>
+            <h3>Daten-Import</h3>
+        </a>
+    </div>
+</div>
+{% endblock %}

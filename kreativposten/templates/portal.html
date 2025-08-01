@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ihr Auftragsportal: {{ auftrag.angebot_nr }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+</head>
+<body>
+    <video autoplay muted loop id="bg-video"><source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-liquid-painting-34355-large.mp4" type="video/mp4"></video>
+    
+    <div class="portal-card">
+        <h1>Ihr Auftrag: {{ auftrag.angebot_nr }}</h1>
+        <p class="subtitle">Willkommen in Ihrem persönlichen Auftragsportal, {{ auftrag.kunde_name }}!</p>
+        
+        <ul class="status-tracker">
+            <li class="tracker-step {% if aktuelle_phase >= 1 %}active{% endif %}"><span class="dot"></span><span class="label">Angebot</span></li>
+            <li class="tracker-step {% if aktuelle_phase >= 2 %}active{% endif %}"><span class="dot"></span><span class="label">Freigabe</span></li>
+            <li class="tracker-step {% if aktuelle_phase >= 3 %}active{% endif %}"><span class="dot"></span><span class="label">Produktion</span></li>
+            <li class="tracker-step {% if aktuelle_phase >= 4 %}active{% endif %}"><span class="dot"></span><span class="label">Fertig</span></li>
+        </ul>
+
+        {% if auftrag.status == 'Angebot an Kunden gesendet' %}
+            <div class="action-box">
+                <h3>Bitte bestätigen Sie Ihr Angebot</h3>
+                <p>Bitte prüfen Sie die Details in der Angebots-PDF. Wenn alles passt, können Sie den Auftrag hier direkt annehmen.</p>
+                <div class="action-buttons">
+                    <a href="{{ url_for('portal.generate_pdf_final', angebot_id=auftrag.id) }}" target="_blank" class="btn">Angebot ansehen (PDF)</a>
+                    <button class="btn btn-success" onclick="angebotAnnehmen()">Angebot annehmen</button>
+                </div>
+            </div>
+        {% endif %}
+
+        <h2>Datei-Hub</h2>
+        <div class="file-hub">
+            <div class="upload-box">
+                <p>Hier können Sie Ihre Druckdaten oder andere Dateien für uns hochladen.</p>
+                <form action="{{ url_for('portal.upload_by_token', token=auftrag.kunden_token) }}" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="datei" required>
+                    <button type="submit" class="btn">Jetzt hochladen</button>
+                </form>
+            </div>
+            <ul class="file-list">
+                {% for datei in alle_dateien|sort(attribute='upload_datum', reverse=True) %}
+                <li class="file-item" onclick="openLightbox(this)" data-datei='{{ datei.to_dict() | tojson | safe }}'>
+                    <div class="file-info">
+                        <span class="material-symbols-outlined" style="font-size: 2.5rem;">{% if datei.dokument_typ == 'Rechnung' %}receipt_long{% elif datei.dokument_typ == 'Korrekturabzug'%}draft{% else %}description{% endif %}</span>
+                        <div>
+                            <strong>{{ datei.original_filename }}</strong>
+                            <div class="file-meta">
+                                {% if datei.hochgeladen_von == 'Admin' %}Von uns {% else %}Von Ihnen {% endif %}
+                                hochgeladen am {{ datei.upload_datum.strftime('%d.%m.%Y') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        {% if datei.freigabe_status == 'Freigegeben' %}
+                            <span style="color: var(--success-color);">Freigegeben</span>
+                        {% elif datei.freigabe_status == 'Änderungswunsch' %}
+                             <span style="color: var(--warning-color);">Änderung gewünscht</span>
+                        {% endif %}
+                    </div>
+                </li>
+                {% else %}
+                <p>Bisher wurden keine Dateien ausgetauscht.</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2>Auftrags-Chronik</h2>
+        <div class="activity-feed">
+            <div class="activity-events" id="activity-events-container" data-last-timestamp="{{ ereignisse[-1].erstellt_am.isoformat() if ereignisse else '' }}">
+                {% for ereignis in ereignisse %}
+                    <div class="event ereignis-{{ ereignis.typ }} sender-{{ ereignis.sender|lower }}">
+                        <div class="event-icon">
+                            {% if ereignis.typ == 'nachricht' and ereignis.sender == 'Admin' %}
+                                <span class="material-symbols-outlined">person</span>
+                            {% elif ereignis.typ == 'nachricht' and ereignis.sender == 'Kunde' %}
+                                <span class="material-symbols-outlined">face</span>
+                            {% elif ereignis.typ == 'freigabe' %}
+                                <span class="material-symbols-outlined" style="color: var(--success-color);">check_circle</span>
+                            {% elif ereignis.typ == 'aenderung' %}
+                                <span class="material-symbols-outlined" style="color: var(--warning-color);">sync_problem</span>
+                            {% elif ereignis.typ == 'upload' %}
+                                <span class="material-symbols-outlined">upload_file</span>
+                            {% else %}
+                                <span class="material-symbols-outlined">info</span>
+                            {% endif %}
+                        </div>
+                        <div class="event-content">
+                            {% if ereignis.typ == 'nachricht' %}
+                            <div class="sender-info">
+                                <span class="sender">{{ ereignis.sender }}</span>
+                                <span class="timestamp">{{ ereignis.erstellt_am.strftime('%d.%m.%y %H:%M') }}</span>
+                            </div>
+                            {% endif %}
+                            <div class="text">{{ ereignis.inhalt | nl2br }}</div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="placeholder-text" style="text-align: center; opacity: 0.7;">Noch keine Ereignisse in der Chronik.</p>
+                {% endfor %}
+            </div>
+            <form class="message-form" id="message-form" onsubmit="event.preventDefault();">
+                <input type="text" id="message-input" placeholder="Ihre Nachricht an uns..." required autocomplete="off">
+                <button type="submit" class="btn">Senden</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="lightbox-overlay" class="lightbox-overlay" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="lightbox-header">
+                <h3 id="lightbox-filename" style="margin:0;"></h3>
+                <button onclick="closeLightbox()" style="background:none; border:none; font-size: 2rem; cursor:pointer; color: #fff; padding: 0 1rem;">&times;</button>
+            </div>
+            <div class="lightbox-preview">
+                <img id="lightbox-img" src="" style="display:none;">
+                <iframe id="lightbox-pdf" src="" style="display:none;"></iframe>
+                <div id="lightbox-fallback" style="display:none; padding: 3rem;">
+                    <p>Diese Datei kann nicht direkt im Browser angezeigt werden.</p>
+                </div>
+            </div>
+            <div id="lightbox-actions" style="display:none;"></div>
+        </div>
+    </div>
+
+    {% for datei in alle_dateien if datei.freigabe_status == 'Freigabe ausstehend' %}
+    <div id="aenderung-modal-{{ datei.id }}" class="modal-overlay" style="display: none;" onclick="closeModal('aenderung-modal-{{ datei.id }}')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('aenderung-modal-{{ datei.id }}')">&times;</button>
+            <h3>Änderungswunsch mitteilen</h3>
+            <p>Bitte beschreiben Sie Ihre Änderungswünsche zu "{{ datei.original_filename }}" so detailliert wie möglich.</p>
+            <form class="aenderung-form" data-datei-id="{{ datei.id }}">
+                <textarea class="aenderung-kommentar" required rows="5" style="width: 100%;"></textarea>
+                <button type="submit" class="btn btn-warning" style="margin-top: 1rem;">Wunsch absenden</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+
+    <script>
+        // Daten vom Server sicher an JavaScript übergeben
+        const PORTAL_TOKEN = "{{ auftrag.kunden_token }}";
+        const AUFTRAG_ID = {{ auftrag.id }};
+    </script>
+    <script src="{{ url_for('static', filename='js/portal.js') }}"></script>
+</body>
+</html>

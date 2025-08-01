@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% set active_page = 'stammdaten' %}
+
+{% block title %}Artikelvarianten für {{ produkt.name }} - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem; }
+    .btn { display: inline-block; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: #007bff; border: none; padding: .6rem 1.2rem; font-size: 1rem; border-radius: 8px; text-decoration: none; }
+    .btn-secondary { background-color: #6c757d; }
+    .btn-small { padding: .25rem .5rem; font-size: .875rem; }
+    .btn-success { background-color: #28a745; }
+    .table-wrapper { margin-top: 2rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .standard-col { text-align: center; }
+    .standard-col .material-symbols-outlined { color: #ffc107; font-size: 1.5rem; vertical-align: middle;}
+</style>
+
+<div class="main-content-padded">
+    <div class="page-header">
+        <div>
+            <h1>Artikelvarianten</h1>
+            <h2 style="margin: 0; color: var(--text-secondary);">für Produkt: {{ produkt.name }}</h2>
+        </div>
+        <a href="{{ url_for('stammdaten.artikel_uebersicht') }}" class="btn btn-secondary">&laquo; Zurück zur Produktübersicht</a>
+    </div>
+
+    <div class="table-wrapper card">
+        <h2>Bestehende Varianten</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>SKU</th>
+                    <th>Farbe</th>
+                    <th>Größe</th>
+                    <th>EK Netto</th>
+                    <th>Lagerbestand</th>
+                    <th class="standard-col">Standard</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for variante in varianten %}
+                <tr>
+                    <td>{{ variante.sku }}</td>
+                    <td>{{ variante.farbe }}</td>
+                    <td>{{ variante.groesse }}</td>
+                    <td>{{ "%.2f"|format(variante.einkaufspreis_netto or 0) }} €</td>
+                    <td>{{ variante.lagerbestand }} Stk.</td>
+                    <td class="standard-col">
+                        {% if variante.ist_standard %}
+                            <span class="material-symbols-outlined">star</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{{ url_for('stammdaten.toggle_standard_status', variante_id=variante.id) }}" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-small {% if variante.ist_standard %}btn-secondary{% else %}btn-success{% endif %}">
+                                {% if variante.ist_standard %}Standard entfernen{% else %}Als Standard festlegen{% endif %}
+                            </button>
+                        </form>
+                        <a href="{{ url_for('stammdaten.artikel_bearbeiten', variante_id=variante.id) }}" class="btn btn-small btn-secondary">Bearbeiten</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">Für dieses Produkt wurden noch keine Varianten angelegt.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

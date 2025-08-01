@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% set active_page = 'kalkulator' %}
+
+{% block title %}Auftragskalkulator - Print Manager{% endblock %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kalkulator.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+    <div class="container">
+        <h1>Auftragskalkulator</h1>
+        <form id="calculator-form" onsubmit="return false;">
+            <input type="hidden" name="id" id="angebot-id-hidden">
+
+            <div class="order-details">
+                <h2>Kundendaten & Details</h2>
+                <div class="form-grid">
+                    <div class="form-group"><label for="kunde-name">Name</label><input type="text" id="kunde-name"></div>
+                    <div class="form-group"><label for="kunde-firma">Firma (optional)</label><input type="text" id="kunde-firma"></div>
+                    <div class="form-group"><label for="abholdatum">Gewünschtes Abholdatum</label><input type="date" id="abholdatum"></div>
+                    <div class="form-group"><label for="dringlichkeit">Dringlichkeit</label><select id="dringlichkeit"><option value="Standard">Standard</option><option value="Express">Express (+15%)</option><option value="Overnight">Overnight (+30%)</option></select></div>
+                </div>
+            </div>
+
+            <div id="positions-container" style="margin-top: 2rem;"></div>
+            
+            <button type="button" class="btn-add-pos" data-action="add-position">+ Position hinzufügen</button>
+            
+            <div class="manual-adjustments" style="margin-top: 1.5rem;">
+                <h2>Manuelle Anpassungen</h2>
+                <div class="form-group">
+                    <input type="radio" id="mode-standard" name="adjustment-mode" value="standard" checked><label for="mode-standard">Standardberechnung</label>
+                    <input type="radio" id="mode-fixed" name="adjustment-mode" value="fixed" style="margin-left:20px;"><label for="mode-fixed">Manueller Festpreis</label>
+                </div>
+                <div id="standard-adjustments">
+                    <div class="form-grid-3"><input type="checkbox" id="apply-surcharge"><label for="apply-surcharge">Zusatzaufschlag</label><input type="number" id="surcharge-amount" value="5.90" step="0.1"></div>
+                    <div class="form-grid-3" style="margin-top:1rem;"><input type="checkbox" id="apply-zusatzkosten"><input type="text" id="zusatzkosten-desc" placeholder="Beschreibung Zusatzkosten"><input type="number" id="zusatzkosten-amount" value="0" step="0.1"></div>
+                    <div class="form-grid-3" style="margin-top:1rem;"><input type="checkbox" id="apply-rabatt"><input type="text" id="rabatt-desc" placeholder="Beschreibung Sonderrabatt"><input type="number" id="rabatt-percent" placeholder="Rabatt in %" value="0" step="1"></div>
+                </div>
+                <div id="fixed-price-adjustment" style="display:none;"><div class="form-group"><label for="fixed-price-amount">Gesamtpreis (Brutto)</label><input type="number" id="fixed-price-amount" value="0" step="0.1"><div id="fixed-price-savings"></div></div></div>
+            </div>
+            
+            <div class="main-actions">
+                <button type="button" data-action="save-angebot">Entwurf speichern</button>
+            </div>
+            <div id="status-messages"></div>
+        </form>
+    </div>
+
+    <div class="live-calc-container">
+        <h2>Live-Kalkulation</h2>
+        <h4 id="angebot-nr-display"></h4>
+        <div id="live-calc-details"><p style="color: var(--text-secondary); text-align: center;">Bitte fügen Sie eine Position hinzu.</p></div>
+        <div class="total-summary">
+            <div class="calc-line"><span>Summe Positionen</span><span id="total-positions">0,00 €</span></div>
+            <div id="adjustments-summary"></div>
+            <div class="calc-line"><span>Zwischensumme (netto)</span><span id="total-netto">0,00 €</span></div>
+            <div class="calc-line"><span>+ 19% MwSt.</span><span id="total-mwst">0,00 €</span></div>
+            <hr>
+            <div class="total-row"><h3>Gesamtsumme</h3><div id="total-brutto" class="total">0,00 €</div></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script id="standard-produkte-data" type="application/json">{{ standard_produkte | tojson | safe }}</script>
+    <script id="katalog-produkte-data" type="application/json">{{ katalog_produkte | tojson | safe }}</script>
+    <script>
+        const standardProdukteJson = document.getElementById('standard-produkte-data').textContent;
+        const STANDARD_PRODUKTE_DATA = JSON.parse(standardProdukteJson);
+        const katalogProdukteJson = document.getElementById('katalog-produkte-data').textContent;
+        const KATALOG_PRODUKTE_DATA = JSON.parse(katalogProdukteJson);
+    </script>
+    <script src="{{ url_for('static', filename='js/kalkulator.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,261 @@
+{% extends "layout.html" %}
+{% set active_page = 'produktion' %}
+
+{% block title %}Auftrag {{ auftrag.angebot_nr }}{% endblock %}
+
+{% block content %}
+<style>
+    .main-content { padding: 2rem; box-sizing: border-box; }
+    .page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+    .page-header h1 { margin: 0; line-height: 1.2; }
+    .page-header .sub-head { font-size: 1.2rem; font-weight: 400; color: var(--text-secondary); }
+    .page-actions .btn { margin-left: 0.5rem; }
+    .grid-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+    .grid-col-7 { grid-column: span 7; }
+    .grid-col-5 { grid-column: span 5; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); }
+    .card-header h2 { margin: 0; font-size: 1.2rem; }
+    .card-content { padding: 1.5rem; }
+    .flash-messages { list-style: none; padding: 0; margin-bottom: 1rem; }
+    .flash-messages .success { padding: 1rem; background-color: #d4edda; color: #155724; border-radius: 6px; }
+
+    /* File Hub Styles */
+    .file-list { list-style: none; padding: 0; }
+    .file-list-header { font-weight: 600; color: var(--text-secondary); font-size: 0.9em; margin: 1rem 0 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid var(--border-color); }
+    .file-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0.5rem; border-bottom: 1px solid #f1f3f5; }
+    .file-info { flex-grow: 1; }
+    .file-meta { font-size: 0.8em; color: #6c757d; }
+    .file-actions a, .file-actions button { text-decoration: none; color: #dc3545; background: none; border: none; cursor: pointer; padding: 0; }
+    .upload-form-admin { background-color: #f8f9fa; padding: 1rem; border-radius: 6px; margin-top: 1rem; }
+
+    /* Activity Feed */
+    .activity-events { max-height: 600px; overflow-y: auto; padding: 1rem; margin-bottom: 1rem; }
+    .event { margin-bottom: 1rem; display: flex; gap: 10px; }
+    .event-icon { flex-shrink: 0; width: 30px; text-align: center; }
+    .event-content { flex-grow: 1; }
+    .event .sender { font-weight: bold; font-size: 0.9em; text-transform: capitalize; }
+    .event .timestamp { font-size: 0.8em; color: #6c757d; margin-left: 5px; }
+    .event .text { padding: 0.5rem 0.75rem; border-radius: 12px; line-height: 1.4; word-wrap: break-word; display: inline-block; max-width: 95%; }
+    .event.sender-admin { flex-direction: row-reverse; }
+    .event.sender-admin .text { background: #e0edff; }
+    .event.sender-kunde .text { background: #f1f3f5; }
+    .event.ereignis-system .text, .event.ereignis-status .text { font-style: italic; color: var(--text-secondary); text-align: center; width: 100%; background: none; padding: 0.5rem 0; font-size: 0.9em; }
+
+    .message-form { display: flex; gap: 0.5rem; }
+    #message-input { flex-grow: 1; border: 1px solid var(--border-color); border-radius: 6px; padding: 0.5rem; font-family: inherit; }
+    
+    /* Modal Styles */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 1000; display: none; align-items: center; justify-content: center; }
+    .modal-content { background: #fff; padding: 2rem; border-radius: 8px; width: 90%; max-width: 700px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+    .modal-header h2 { margin: 0; }
+    .modal-close { font-size: 2rem; font-weight: bold; line-height: 1; color: #000; opacity: 0.3; background: none; border: none; cursor: pointer; }
+    .modal-body { display: flex; gap: 2rem; }
+    .modal-section { flex: 1; }
+    .modal-section h3 { font-size: 1.1rem; margin-top: 0; margin-bottom: 1rem; }
+    .modal-section input[type="text"] { width: 100%; box-sizing: border-box; background-color: #f8f9fa; }
+    .modal-section img { max-width: 100%; border: 1px solid var(--border-color); border-radius: 4px; }
+</style>
+
+<div class="main-content">
+    <div class="page-header">
+        <div>
+            <h1>{{ auftrag.angebot_nr }}</h1>
+            <span class="sub-head">{{ auftrag.kunde_name }} &bull; <span style="font-weight: bold;">{{ auftrag.status }}</span></span>
+        </div>
+        <div class="page-actions">
+            <a href="{{ url_for('produktionsmappe', auftrag_id=auftrag.id) }}" target="_blank" class="btn">Produktionsmappe</a>
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('shareModal').style.display='flex'">Teilen & QR-Codes</button>
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flash-messages>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="grid-container">
+        <div class="grid-col-7">
+            <div class="card">
+                <div class="card-header"><h2>Auftrags-Chronik & Chat</h2></div>
+                <div class="card-content">
+                    <div class="activity-events" id="activity-events-container" data-last-timestamp="{{ ereignisse[-1].erstellt_am.isoformat() if ereignisse else '' }}">
+                        {% for ereignis in ereignisse %}
+                            <div class="event ereignis-{{ ereignis.typ }} sender-{{ ereignis.sender|lower }}">
+                                <div class="event-content">
+                                    {% if ereignis.typ == 'nachricht' %}
+                                    <div class="sender-info">
+                                        <span class="sender">{{ 'Du' if ereignis.sender == 'Admin' else 'Kunde' }}</span>
+                                        <span class="timestamp">{{ ereignis.erstellt_am.strftime('%d.%m.%y %H:%M') }}</span>
+                                    </div>
+                                    {% endif %}
+                                    <div class="text">{{ ereignis.inhalt | nl2br }}</div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <p style="text-align: center; color: var(--text-secondary);">Noch keine Ereignisse in der Chronik.</p>
+                        {% endfor %}
+                    </div>
+                     <form class="message-form" id="message-form">
+                        <input type="text" id="message-input" placeholder="Nachricht an den Kunden..." required autocomplete="off">
+                        <button type="submit" class="btn">Senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-col-5">
+            <div class="card">
+                <div class="card-header"><h2>Datei-Hub</h2></div>
+                <div class="card-content">
+                    <ul class="file-list">
+                        {% if aktive_freigaben %}
+                            <li class="file-list-header">Freigaben ausstehend</li>
+                            {% for datei in aktive_freigaben %}
+                            <li class="file-item">
+                                <div class="file-info"><a href="/view/auftragsdatei/{{ datei.saved_filename }}" target="_blank">{{ datei.original_filename }}</a><div class="file-meta">Korrekturabzug</div></div>
+                            </li>
+                            {% endfor %}
+                        {% endif %}
+
+                        <li class="file-list-header">Design- & Druckdateien</li>
+                        {% for datei in design_dateien %}
+                        <li class="file-item">
+                            <div class="file-info"><a href="/view/auftragsdatei/{{ datei.saved_filename }}" target="_blank">{{ datei.original_filename }}</a><div class="file-meta">Hochgeladen von: {{ datei.hochgeladen_von }}</div></div>
+                            <div class="file-actions">
+                                <form action="{{ url_for('loesche_auftragsdatei', datei_id=datei.id) }}" method="POST" onsubmit="return confirm('Soll die Datei {{ datei.original_filename }} wirklich gelöscht werden?');"><button type="submit">Löschen</button></form>
+                            </div>
+                        </li>
+                        {% else %}
+                        <li><div class="file-meta">Keine Design- oder Druckdateien.</div></li>
+                        {% endfor %}
+
+                        <li class="file-list-header">Angebote & Rechnungen</li>
+                        {% for datei in admin_dokumente %}
+                        <li class="file-item">
+                             <div class="file-info"><a href="/view/auftragsdatei/{{ datei.saved_filename }}" target="_blank">{{ datei.original_filename }}</a><div class="file-meta">{{ datei.dokument_typ }}</div></div>
+                        </li>
+                        {% else %}
+                        <li><div class="file-meta">Keine Angebote oder Rechnungen.</div></li>
+                        {% endfor %}
+                    </ul>
+                    <div class="upload-form-admin">
+                        <form action="{{ url_for('upload_datei_admin', auftrag_id=auftrag.id) }}" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="datei" required>
+                            <div>
+                                <input type="checkbox" name="is_korrekturabzug" id="is_korrekturabzug"> <label for="is_korrekturabzug" style="font-weight:normal;">Als Korrekturabzug (sendet E-Mail an Kunde)</label>
+                            </div>
+                             <div>
+                                <input type="checkbox" name="is_rechnung" id="is_rechnung"> <label for="is_rechnung" style="font-weight:normal;">Als Rechnung</label>
+                            </div>
+                            <button type="submit" class="btn" style="width:100%; margin-top:0.5rem;">Datei hochladen</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="shareModal" class="modal-overlay" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>Teilen & Exportieren</h2>
+            <button class="modal-close" onclick="document.getElementById('shareModal').style.display='none'">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-section">
+                <h3>Kundenportal</h3>
+                <p style="font-size: 0.9em; color: var(--text-secondary);">Für Überblick, Freigaben und Chat.</p>
+                <label for="portal-link">Link zum Kopieren:</label>
+                <input type="text" id="portal-link" value="{{ portal_url }}" readonly onclick="this.select()">
+                <br><br>
+                <img src="data:image/png;base64,{{ portal_qr_code }}" alt="QR Code Kundenportal">
+            </div>
+            <div class="modal-section">
+                <h3>Datei-Upload</h3>
+                <p style="font-size: 0.9em; color: var(--text-secondary);">Für schnellen, mobilen Upload.</p>
+                <label for="upload-link">Link zum Kopieren:</label>
+                <input type="text" id="upload-link" value="{{ upload_url }}" readonly onclick="this.select()">
+                <br><br>
+                <img src="data:image/png;base64,{{ upload_qr_code }}" alt="QR Code Upload-Seite">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const eventsContainer = document.getElementById('activity-events-container');
+    if (eventsContainer) {
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+        
+        const scrollToBottom = () => { eventsContainer.scrollTop = eventsContainer.scrollHeight; };
+        scrollToBottom();
+
+        const addEreignisToChronik = (ereignis) => {
+            const placeholder = eventsContainer.querySelector('p');
+            if (placeholder) placeholder.remove();
+
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `event ereignis-${ereignis.typ} sender-${ereignis.sender}`;
+            
+            const eventDate = new Date(ereignis.zeit_iso);
+            const formattedDate = eventDate.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' });
+            let sender = 'Du';
+            if (ereignis.sender === 'kunde') sender = 'Kunde';
+
+            let senderInfoHtml = '';
+            if (ereignis.typ === 'nachricht') {
+                senderInfoHtml = `
+                <div class="sender-info">
+                    <span class="sender">${sender}</span>
+                    <span class="timestamp">${formattedDate}</span>
+                </div>`;
+            }
+
+            eventDiv.innerHTML = `
+                <div class="event-content">
+                    ${senderInfoHtml}
+                    <div class="text">${ereignis.inhalt.replace(/(?:\r\n|\r|\n)/g, '<br>')}</div>
+                </div>
+            `;
+            eventsContainer.appendChild(eventDiv);
+        };
+
+        messageForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inhalt = messageInput.value.trim();
+            if (!inhalt) return;
+            try {
+                await fetch(`/api/auftrag/{{ auftrag.id }}/nachricht`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ inhalt: inhalt })
+                });
+                messageInput.value = '';
+            } catch (error) { alert('Nachricht konnte nicht gesendet werden.'); }
+        });
+
+        setInterval(async () => {
+            let lastTimestamp = eventsContainer.dataset.lastTimestamp;
+            const response = await fetch(`/api/auftrag/{{ auftrag.id }}/ereignisse?since=${lastTimestamp}`);
+            const neueEreignisse = await response.json();
+            
+            if (neueEreignisse.length > 0) {
+                neueEreignisse.forEach(addEreignisToChronik);
+                eventsContainer.dataset.lastTimestamp = neueEreignisse[neueEreignisse.length - 1].zeit_iso;
+                scrollToBottom();
+            }
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}

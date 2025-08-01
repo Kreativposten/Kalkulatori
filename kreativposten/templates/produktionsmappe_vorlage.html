@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Produktionsmappe {{ data.auftrag.angebot_nr }}</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        body { font-family: sans-serif; font-size: 10pt; color: #333; }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid black; padding-bottom: 10px; }
+        .qr-code { width: 35mm; height: 35mm; }
+        .doc-details { text-align: right; }
+        .content { margin-top: 10mm; }
+        h1, h2, h3 { color: #000; }
+        h1 { font-size: 22pt; } h2 { font-size: 14pt; border-bottom: 1px solid #ccc; padding-bottom: 3px; margin-top: 8mm; }
+        table { width: 100%; border-collapse: collapse; margin-top: 5mm; }
+        th, td { padding: 8px 4px; text-align: left; border-bottom: 1px solid #eee; vertical-align: top;}
+        th { background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>Produktionsmappe</h1>
+            <h2>Auftrag: {{ data.auftrag.angebot_nr }}</h2>
+            <p>
+                <strong>Kunde:</strong> {{ data.auftrag.kunde_name }}<br>
+                <strong>Datum:</strong> {{ data.auftrag.datum.strftime('%d.%m.%Y') }}
+            </p>
+        </div>
+        <img src="data:image/png;base64,{{ data.qr_code_image }}" class="qr-code" alt="QR Code">
+    </div>
+    <div class="content">
+        <h2>Positionen</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:5%;">Pos</th>
+                    <th style="width:50%;">Textil</th>
+                    <th style="width:10%;">Menge</th>
+                    <th>Details (Größe / Farbe)</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pos in data.auftrag_data.positions %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ pos.textil }}</td>
+                    <td>{{ pos.total_menge }}</td>
+                    <td>
+                        {% for artikel in pos.artikel %}
+                            {{ artikel.menge }}x {{ artikel.groesse }} / {{ artikel.farbe }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Drucke</h2>
+        {% for pos in data.auftrag_data.positions %}
+            <h3>Position {{ loop.index }}: {{ pos.textil }}</h3>
+            {% if pos.drucke %}
+                <table>
+                    <thead>
+                        <tr><th>Druckposition</th><th>Größe</th><th>Breite</th><th>Motiv</th></tr>
+                    </thead>
+                    <tbody>
+                    {% for druck in pos.drucke %}
+                        <tr>
+                            <td>{{ druck.position or 'N/A' }}</td>
+                            <td>{{ druck.typ }}</td>
+                            <td>{{ druck.breite or 'N/A' }} cm</td>
+                            <td>{{ druck.filename or 'Beschreibung' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Keine Drucke für diese Position.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datei-Upload für {{ auftrag.angebot_nr }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        :root { --brand-color: #007bff; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; color: #333; background-color: #f4f7f6; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
+        .upload-container { width: 90%; max-width: 500px; background: white; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); padding: 2rem 3rem; text-align: center; }
+        h1 { font-size: 1.8rem; margin: 0 0 0.5rem 0; }
+        .subtitle { opacity: 0.7; margin: 0 0 2rem 0; }
+        .upload-form { margin-bottom: 2rem; }
+        input[type="file"], input[type="text"] { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+        .btn { display: inline-block; width: 100%; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: var(--brand-color); border: none; padding: .8rem 1.5rem; font-size: 1rem; border-radius: 8px; box-sizing: border-box; }
+        .file-list h2 { font-size: 1.2rem; text-align: left; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+        .file-list ul { list-style: none; padding: 0; text-align: left; }
+        .file-list li { padding: 0.75rem 0.5rem; border-bottom: 1px solid #eee; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+        .file-list li:hover { background: #f0f0f0; }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 1000; display: none; align-items: center; justify-content: center; }
+        .lightbox-content { background: #fff; padding: 1rem; border-radius: 8px; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; }
+        .lightbox-header { display: flex; justify-content: space-between; align-items: center; padding: 0 0.5rem 0.5rem; border-bottom: 1px solid #dee2e6; }
+        .lightbox-preview { flex-grow: 1; text-align: center; padding: 1rem; overflow: auto; }
+        .lightbox-preview img, .lightbox-preview iframe { max-width: 100%; max-height: 70vh; border: none; }
+        .lightbox-actions { padding: 1rem 0.5rem 0.5rem; text-align: right; border-top: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Datei-Upload</h1>
+        <p class="subtitle">für Auftrag <strong>{{ auftrag.angebot_nr }}</strong></p>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <p style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form class="upload-form" action="{{ url_for('upload_by_token', token=auftrag.kunden_token) }}" method="POST" enctype="multipart/form-data">
+            <input type="text" name="druckposition" placeholder="Notiz oder Druckposition (optional)">
+            <input type="file" name="datei" required>
+            <button type="submit" class="btn">Datei hochladen</button>
+        </form>
+        <div class="file-list">
+            <h2>Ihre hochgeladenen Dateien</h2>
+            <ul>
+                {% for datei in dateien %}
+                    <li onclick="openLightbox(this)" data-datei='{{ datei.to_dict() | tojson | safe }}'>
+                        <span class="material-symbols-outlined">description</span>
+                        {{ datei.original_filename }}
+                    </li>
+                {% else %}
+                    <li>Noch keine Dateien hochgeladen.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="lightbox-overlay" class="lightbox-overlay" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="lightbox-header">
+                <h3 id="lightbox-filename"></h3>
+                <button onclick="closeLightbox()" style="background:none; border:none; font-size: 2rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="lightbox-preview">
+                <img id="lightbox-img" src="" style="display:none;">
+                <iframe id="lightbox-pdf" src="" style="display:none; width: 80vw; height: 70vh;"></iframe>
+                <div id="lightbox-fallback" style="display:none; padding: 3rem;">
+                    <p>Diese Datei kann nicht direkt im Browser angezeigt werden.</p>
+                </div>
+            </div>
+            <div id="lightbox-actions" class="lightbox-actions">
+                 <a id="lightbox-download-link" href="#" class="btn btn-primary">Datei herunterladen</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(element) {
+            const datei = JSON.parse(element.dataset.datei);
+            const overlay = document.getElementById('lightbox-overlay');
+            const filenameEl = document.getElementById('lightbox-filename');
+            const imgEl = document.getElementById('lightbox-img');
+            const pdfEl = document.getElementById('lightbox-pdf');
+            const fallbackEl = document.getElementById('lightbox-fallback');
+            const downloadLink = document.getElementById('lightbox-download-link');
+            
+            imgEl.style.display = 'none';
+            pdfEl.style.display = 'none';
+            fallbackEl.style.display = 'none';
+            
+            filenameEl.textContent = datei.original_filename;
+            const viewUrl = `/view/auftragsdatei/${datei.saved_filename}`;
+            const downloadUrl = `/download/auftragsdatei/${datei.saved_filename}`;
+            const fileExtension = datei.original_filename.split('.').pop().toLowerCase();
+
+            if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExtension)) {
+                imgEl.src = viewUrl;
+                imgEl.style.display = 'block';
+            } else if (fileExtension === 'pdf') {
+                pdfEl.src = viewUrl;
+                pdfEl.style.display = 'block';
+            } else {
+                fallbackEl.style.display = 'block';
+            }
+            downloadLink.href = downloadUrl;
+            overlay.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-overlay').style.display = 'none';
+            document.getElementById('lightbox-img').src = '';
+            document.getElementById('lightbox-pdf').src = '';
+        }
+    </script>
+</body>
+</html>

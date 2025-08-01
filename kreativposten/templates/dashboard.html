@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+    }
+    .widget {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .widget-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+    }
+    .task-list { list-style: none; padding: 0; margin: 0; }
+    .task-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); }
+    .task-item:last-child { border-bottom: none; }
+    .task-item input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; cursor: pointer; }
+    .task-item label { flex-grow: 1; }
+    .task-item.done label { text-decoration: line-through; color: var(--text-secondary); }
+    #new-task-form { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    #new-task-input { flex-grow: 1; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; }
+    .btn { display: inline-block; font-weight: 500; color: var(--text-primary); text-align: center; cursor: pointer; background-color: #f8f9fa; border: 1px solid #dee2e6; padding: .25rem .5rem; font-size: 0.875rem; border-radius: .25rem; text-decoration: none; transition: all .15s ease-in-out; }
+    .btn:hover { filter: brightness(95%); }
+    .btn-primary { color: #fff; background-color: #007bff; border-color: #007bff; }
+</style>
+
+<div class="main-content-padded">
+    <h1>Dashboard</h1>
+    <div class="dashboard-grid">
+        <div class="main-column">
+            <div class="widget">
+                <h2 class="widget-title">Kalender</h2>
+                <p>Hier entsteht die Kalender-Ansicht mit den Abholterminen.</p>
+            </div>
+            <div class="widget">
+                <h2 class="widget-title">Letzte Aktivitäten</h2>
+                <p>Hier entsteht der globale "News Feed" mit den letzten Kunden-Aktivitäten.</p>
+            </div>
+        </div>
+        <div class="side-column">
+            <div class="widget">
+                <h2 class="widget-title">Offene Aufgaben</h2>
+                <ul class="task-list" id="task-list-container">
+                    </ul>
+                <form id="new-task-form">
+                    <input type="text" id="new-task-input" placeholder="Neue Aufgabe hinzufügen..." required>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const taskListContainer = document.getElementById('task-list-container');
+    const newTaskForm = document.getElementById('new-task-form');
+    const newTaskInput = document.getElementById('new-task-input');
+
+    function renderTask(task) {
+        const li = document.createElement('li');
+        li.className = 'task-item';
+        li.dataset.taskId = task.id;
+        if (task.erledigt) {
+            li.classList.add('done');
+        }
+        li.innerHTML = `
+            <input type="checkbox" ${task.erledigt ? 'checked' : ''}>
+            <label>${task.inhalt}</label>
+        `;
+        li.querySelector('input[type="checkbox"]').addEventListener('change', () => toggleTask(task.id));
+        return li;
+    }
+
+    async function ladeAufgaben() {
+        const response = await fetch('/api/tasks');
+        const tasks = await response.json();
+        taskListContainer.innerHTML = '';
+        if (tasks.length > 0) {
+            tasks.forEach(task => {
+                taskListContainer.appendChild(renderTask(task));
+            });
+        } else {
+            taskListContainer.innerHTML = '<p style="font-size: 0.9em; color: var(--text-secondary);">Keine offenen Aufgaben. Gut gemacht!</p>';
+        }
+    }
+
+    async function toggleTask(taskId) {
+        await fetch(`/api/tasks/${taskId}/toggle`, { method: 'POST' });
+        const taskItem = document.querySelector(`.task-item[data-task-id='${taskId}']`);
+        if (taskItem) {
+            taskItem.remove(); 
+        }
+    }
+
+    newTaskForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const inhalt = newTaskInput.value.trim();
+        if (!inhalt) return;
+
+        const response = await fetch('/api/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ inhalt: inhalt })
+        });
+        
+        if (response.ok) {
+            newTaskInput.value = '';
+            ladeAufgaben(); 
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        ladeAufgaben();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% set active_page = 'stammdaten' %}
+
+{% block title %}Produkte verwalten - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; }
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem; }
+    .card-header h2 { margin: 0; font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #495057; }
+    input[type="text"], input[type="number"], textarea {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        box-sizing: border-box;
+    }
+    .btn { display: inline-block; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: #007bff; border: none; padding: .6rem 1.2rem; font-size: 1rem; border-radius: 8px; }
+    .btn-secondary { background-color: #6c757d; }
+    .table-wrapper { margin-top: 2rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+    th { background-color: #f8f9fa; }
+    tr:last-child td { border-bottom: none; }
+</style>
+
+<div class="main-content-padded">
+    <div class="page-header">
+        <h1>Produkte (Textilarten) verwalten</h1>
+        <a href="{{ url_for('stammdaten.stammdaten') }}" class="btn btn-secondary">&laquo; Zurück</a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card">
+        <div class="card-header"><h2>Neues Produkt anlegen</h2></div>
+        <form method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Produktname</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="hersteller">Hersteller</label>
+                    <input type="text" id="hersteller" name="hersteller">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="beschreibung">Beschreibung</label>
+                <textarea id="beschreibung" name="beschreibung" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="einkaufspreis_netto_produkt">Basis Einkaufspreis (Netto)</label>
+                <input type="number" step="0.01" id="einkaufspreis_netto_produkt" name="einkaufspreis_netto_produkt" placeholder="z.B. 4.50">
+            </div>
+            <button type="submit" class="btn">Produkt speichern</button>
+        </form>
+    </div>
+
+    <div class="table-wrapper">
+        <h2>Bestehende Produkte</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Hersteller</th>
+                    <th>Basis EK (Netto)</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produkt in produkte %}
+                <tr>
+                    <td>{{ produkt.name }}</td>
+                    <td>{{ produkt.hersteller }}</td>
+                    <td>{{ "%.2f"|format(produkt.ek_netto_basis or 0) }} €</td>
+                    <td>
+                        <a href="{{ url_for('stammdaten.produkt_varianten_verwalten', produkt_id=produkt.id) }}">Varianten</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Noch keine Produkte angelegt.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

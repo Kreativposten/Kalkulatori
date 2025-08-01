@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+{% set active_page = 'produktion' %}
+
+{% block title %}Produktions-Pipeline - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { 
+        padding: 1rem 2rem; 
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+    .page-title { margin-top: 1rem; }
+    .kanban-board {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        flex-grow: 1;
+    }
+    .kanban-column {
+        flex: 1;
+        min-width: 300px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+    }
+    .kanban-column-title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #495057;
+        margin: 0;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .kanban-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+    .kanban-card {
+        background: var(--card-bg);
+        padding: 1rem;
+        border-radius: 6px;
+        border-left: 5px solid #6c757d;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .kanban-card h3 { font-size: 1.1em; margin: 0 0 0.5rem 0; }
+    .kanban-card p { margin: 0.25rem 0; font-size: 0.9em; color: var(--text-secondary); }
+    .card-actions { margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .btn { display: inline-block; font-weight: 500; color: var(--text-primary); text-align: center; cursor: pointer; background-color: #f8f9fa; border: 1px solid #dee2e6; padding: .25rem .5rem; font-size: 0.875rem; border-radius: .25rem; text-decoration: none; transition: all .15s ease-in-out; }
+    .btn:hover { filter: brightness(95%); }
+    .btn-primary { color: #fff; background-color: #007bff; border-color: #007bff; }
+    .btn-success { color: #fff; background-color: #28a745; border-color: #28a745; }
+    .btn-secondary { color: #fff; background-color: #6c757d; border-color: #6c757d; }
+    .action-form { display: inline-block; margin: 0; }
+    .status-entwurf { border-left-color: #6c757d; }
+    .status-angebot { border-left-color: #17a2b8; }
+    .status-vorbereitung { border-left-color: #ffc107; }
+    .status-produktion { border-left-color: #fd7e14; }
+    .status-abgeschlossen { border-left-color: #28a745; }
+</style>
+
+<div class="main-content-padded">
+    <h1 class="page-title">Produktions-Pipeline</h1>
+    <div class="kanban-board">
+        <div class="kanban-column" id="col-entwurf">
+            <h3 class="kanban-column-title">Entwürfe</h3>
+            <div class="kanban-cards"></div>
+        </div>
+        <div class="kanban-column" id="col-angebot">
+            <h3 class="kanban-column-title">Angebote an Kunden</h3>
+            <div class="kanban-cards"></div>
+        </div>
+        <div class="kanban-column" id="col-vorbereitung">
+            <h3 class="kanban-column-title">Vorbereitung</h3>
+            <div class="kanban-cards"></div>
+        </div>
+        <div class="kanban-column" id="col-produktion">
+            <h3 class="kanban-column-title">Produktion</h3>
+            <div class="kanban-cards"></div>
+        </div>
+        <div class="kanban-column" id="col-abgeschlossen">
+            <h3 class="kanban-column-title">Abgeschlossen</h3>
+            <div class="kanban-cards"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getColumnIdForStatus(status) {
+        const lowerStatus = status.toLowerCase();
+        if (lowerStatus === 'entwurf') return 'col-entwurf';
+        if (lowerStatus.includes('angebot')) return 'col-angebot';
+        if (lowerStatus.includes('angenommen') || lowerStatus.includes('freigabe') || lowerStatus.includes('warte')) return 'col-vorbereitung';
+        if (lowerStatus.includes('produktion') || lowerStatus.includes('abholbereit')) return 'col-produktion';
+        if (lowerStatus.includes('abgeschlossen')) return 'col-abgeschlossen';
+        return 'col-vorbereitung';
+    }
+
+    function getStatusColorClass(status) {
+        const lowerStatus = status.toLowerCase();
+        if (lowerStatus === 'entwurf') return 'status-entwurf';
+        if (lowerStatus.includes('angebot')) return 'status-angebot';
+        if (lowerStatus.includes('angenommen') || lowerStatus.includes('freigabe') || lowerStatus.includes('warte')) return 'status-vorbereitung';
+        if (lowerStatus.includes('produktion') || lowerStatus.includes('abholbereit')) return 'status-produktion';
+        if (lowerStatus.includes('abgeschlossen')) return 'status-abgeschlossen';
+        return '';
+    }
+
+    async function ladeProjekte() {
+        const response = await fetch('/get-projekte');
+        const projekte = await response.json();
+        
+        document.querySelectorAll('.kanban-cards').forEach(col => col.innerHTML = '');
+
+        if (projekte.length === 0) {
+            document.querySelector('#col-entwurf .kanban-cards').innerHTML = '<p style="padding: 1rem; font-size: 0.9em; color: var(--text-secondary);">Keine Projekte vorhanden.</p>';
+            return;
+        }
+
+        projekte.forEach(p => {
+            const columnId = getColumnIdForStatus(p.status);
+            const column = document.getElementById(columnId);
+            
+            if (column) {
+                const cardsContainer = column.querySelector('.kanban-cards');
+                const card = document.createElement('div');
+                card.className = 'kanban-card ' + getStatusColorClass(p.status);
+                
+                let aktionenHtml = '<div class="card-actions">';
+                if (p.status === 'Entwurf') {
+                    aktionenHtml += `<a href="/kalkulator?load_id=${p.id}" class="btn">Bearbeiten</a>`;
+                    aktionenHtml += `
+                        <form class="action-form" method="POST" action="/angebot/${p.id}/senden" onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').innerText='Sende...';">
+                            <button type="submit" class="btn btn-primary">Senden</button>
+                        </form>
+                    `;
+                } else if (p.status.includes('Angebot')) {
+                    aktionenHtml += `<a href="/kalkulator?load_id=${p.id}" class="btn">Bearbeiten</a>`;
+                    aktionenHtml += `<a href="/generate-pdf/${p.id}" class="btn btn-secondary" target="_blank">PDF</a>`;
+                    aktionenHtml += `
+                        <form class="action-form" action="/angebot/${p.id}/erstelle-auftrag" method="POST" onsubmit="return confirm('Soll aus diesem Angebot ein fester Auftrag erstellt werden (z.B. nach mündlicher Zusage)?');">
+                            <button type="submit" class="btn btn-success">Erstellen</button>
+                        </form>
+                    `;
+                } else {
+                    aktionenHtml += `<a href="/auftrag/${p.id}" class="btn btn-primary">Mappe ansehen</a>`;
+                }
+                aktionenHtml += '</div>';
+
+                card.innerHTML = `
+                    <h3>${p.angebot_nr}</h3>
+                    <p>${p.kunde_name || 'N/A'}</p>
+                    <p>Datum: ${p.datum}</p>
+                    <p><strong>Status: ${p.status}</strong></p>
+                    ${aktionenHtml}
+                `;
+                cardsContainer.appendChild(card);
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        ladeProjekte();
+    });
+</script>
+{% endblock %}

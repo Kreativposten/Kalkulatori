@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% set active_page = 'stammdaten' %}
+
+{% block title %}Artikeldaten importieren - Print Manager{% endblock %}
+
+{% block content %}
+<style>
+    .main-content-padded { padding: 2rem; max-width: 800px; margin: 0 auto; }
+    .card { background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1.5rem; }
+    .card-header h2 { margin: 0; font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .btn { display: inline-block; font-weight: 600; color: #fff; text-align: center; cursor: pointer; background: #007bff; border: none; padding: .8rem 1.5rem; font-size: 1rem; border-radius: 8px; }
+    .flash-success { padding: 1rem; background-color: #d4edda; color: #155724; border-radius: 6px; margin-bottom: 1rem; }
+    .flash-danger { padding: 1rem; background-color: #f8d7da; color: #721c24; border-radius: 6px; margin-bottom: 1rem; }
+    .info-text { color: var(--text-secondary); margin-bottom: 1.5rem; }
+</style>
+
+<div class="main-content-padded">
+    <div style="margin-bottom: 2rem;">
+        <a href="{{ url_for('stammdaten.stammdaten') }}">&laquo; Zurück zur Stammdaten-Übersicht</a>
+        <h1>Artikeldaten importieren</h1>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flash-messages style="list-style: none; padding: 0;">
+            {% for category, message in messages %}
+                <li class="flash-{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="card">
+        <div class="card-header"><h2>Import von Großhändler-CSV-Dateien</h2></div>
+        <div class="card-content">
+            <p class="info-text">
+                Diese Funktion liest die `SKU List.csv` und `Style List.csv` aus dem Hauptverzeichnis und importiert Produkte (Stile) sowie deren Varianten (SKUs, Farben, Größen, Einkaufspreise) in Ihre Datenbank.
+                <br>
+                <br>
+                Bitte stellen Sie sicher, dass die Dateien:
+                <br>
+                * `X021118_Article_Export_2025-07_NEW(EUR).xlsx - SKU List.csv`
+                <br>
+                * `X021118_Article_Export_2025-07_NEW(EUR).xlsx - Style List.csv`
+                <br>
+                im **selben Verzeichnis wie die `run.py`** liegen.
+            </p>
+            <form method="POST">
+                <button type="submit" class="btn">Artikeldaten jetzt importieren</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head><title>Korrekturabzug bereit</title></head>
+<body>
+    <p>Hallo {{ auftrag.kunde_name }},</p>
+    <p>ein neuer Korrekturabzug für Ihren Auftrag <strong>{{ auftrag.angebot_nr }}</strong> steht zur Prüfung bereit.</p>
+    <p>Bitte besuchen Sie Ihr Auftragsportal, um das Dokument zu prüfen und freizugeben:</p>
+    <p><a href="{{ portal_url }}">Zum Auftragsportal</a></p>
+    <p>Vielen Dank!</p>
+</body>
+</html>
